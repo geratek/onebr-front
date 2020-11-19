@@ -225,6 +225,10 @@ export default class BacteriaMap extends Vue {
       background-image: url(../../../../assets/ebursts/sebr.png);
     }
 
+    &.covid {
+      display: none;
+    }
+
     a {
       width: 100%;
       height: 100%;

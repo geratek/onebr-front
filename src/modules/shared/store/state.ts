@@ -29,6 +29,13 @@ const state: SharedState = {
       scientificName: 'Salmonella enterica',
       type: 'SE_BR',
     }),
+    Bacteria.fromJson({
+      image: 'bacteria/covid.png',
+      name: 'COVID',
+      origin: 'World Wide Database',
+      scientificName: 'Sars-Cov-2',
+      type: 'CV_19',
+    }),
   ],
   species: [],
 }
