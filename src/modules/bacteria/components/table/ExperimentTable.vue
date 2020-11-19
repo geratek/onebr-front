@@ -118,10 +118,16 @@ export default class ExperimentTable extends Vue {
 
   private selected: ExperimentListItem[] = []
 
+  private get isCovid(): boolean {
+    const { name } = this.$route.params
+
+    return name === 'COVID'
+  }
+
   private get headers(): DataTableHeader[] {
     const getText = (key: string) => this.$i18n.t(`bacteria.columns.${key}`) as string
 
-    return [
+    const headers: DataTableHeader[] = [
       {
         text: getText('id'),
         value: 'identification',
@@ -150,12 +156,17 @@ export default class ExperimentTable extends Vue {
         text: getText('st'),
         value: 'st',
       },
-      {
+    ]
+
+    if (!this.isCovid) {
+      headers.push({
         text: getText('resistance_genes'),
         value: 'resistome',
         sortable: false,
-      },
-    ]
+      })
+    }
+
+    return headers
   }
 
   private get options() {

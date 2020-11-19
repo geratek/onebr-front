@@ -2,7 +2,7 @@
   <v-form class="experiment-filter" autocomplete="off">
     <v-container>
       <v-row align="center">
-        <v-col md="3">
+        <v-col :md="isCovid ? '7' : '3'">
           <v-text-field
             clearable
             outlined
@@ -17,7 +17,7 @@
             </template>
           </v-text-field>
         </v-col>
-        <v-col md="4">
+        <v-col md="4" v-if="!isCovid">
           <resistome-autocomplete
             :value="filter.resistomes"
             @input="value => applyFilter('resistomes', value)"
@@ -89,6 +89,12 @@ export default class ExperimentFilter extends Vue {
   private readonly fetchExperiments!: (filter: BacteriaFilter) => Promise<void>
 
   private debouncedApplyFilter = debounce(this.applyFilter, 750)
+
+  private get isCovid(): boolean {
+    const { name } = this.$route.params
+
+    return name === 'COVID'
+  }
 
   private applyFilter(name: string, value: string|number|number[]): void {
     const newFilter = this.filter.copyWith({
