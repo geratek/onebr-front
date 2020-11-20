@@ -16,6 +16,7 @@ export interface BacteriaState {
   filter: BacteriaFilter;
   mapConfig: unknown;
   resistome: Resistome | null;
+  species: unknown[];
 }
 
 const bounds = latLngBounds([
@@ -67,6 +68,7 @@ const state: BacteriaState = {
       },
     },
   },
+  species: [],
 }
 
 export default state

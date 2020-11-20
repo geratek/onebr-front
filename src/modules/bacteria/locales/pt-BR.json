@@ -2,6 +2,7 @@
   "filter": {
     "search": "O que deseja buscar?",
     "resistome": "Digite o resistoma resejado",
+    "specie": "Buscar por espécie",
     "start_date": "Data inicio",
     "end_date": "Data fim"
   },
@@ -13,7 +14,8 @@
     "source": "Amostra",
     "host": "Hospedeiro",
     "st": "ST",
-    "resistance_genes": "Genes de resistência"
+    "resistance_genes": "Genes de resistência",
+    "specie": "Espécie"
   },
   "resistome": {
     "aminoglycoside": "Aminoglicosídeos",

@@ -56,7 +56,9 @@
 </template>
 
 <script lang="ts">
-import { Component, Watch, Vue } from 'vue-property-decorator'
+import {
+  Component, Watch, Prop, Vue,
+} from 'vue-property-decorator'
 import { DataTableHeader } from 'vuetify'
 import { namespace } from 'vuex-class'
 
@@ -79,6 +81,9 @@ const BacteriaModule = namespace('bacteria')
   },
 })
 export default class ExperimentTable extends Vue {
+  @Prop({ default: false })
+  private readonly isCovid!: boolean
+
   @BacteriaModule.State
   private readonly experiments!: ExperimentListItem[]
 
@@ -118,12 +123,6 @@ export default class ExperimentTable extends Vue {
 
   private selected: ExperimentListItem[] = []
 
-  private get isCovid(): boolean {
-    const { name } = this.$route.params
-
-    return name === 'COVID'
-  }
-
   private get headers(): DataTableHeader[] {
     const getText = (key: string) => this.$i18n.t(`bacteria.columns.${key}`) as string
 
@@ -158,7 +157,12 @@ export default class ExperimentTable extends Vue {
       },
     ]
 
-    if (!this.isCovid) {
+    if (this.isCovid) {
+      headers.push({
+        text: getText('specie'),
+        value: 'specieName',
+      })
+    } else {
       headers.push({
         text: getText('resistance_genes'),
         value: 'resistome',

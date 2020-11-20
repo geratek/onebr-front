@@ -3,6 +3,7 @@ interface BacteriaFilterInterface {
   ids?: number[];
   searchTerm?: string;
   resistomes?: number[];
+  specie?: string;
   startDate?: string;
   endDate?: string;
   sort?: string[];
@@ -18,6 +19,8 @@ class BacteriaFilter implements BacteriaFilterInterface {
   searchTerm?: string
 
   resistomes?: number[]
+
+  specie?: string
 
   startDate?: string
 

@@ -2,6 +2,7 @@
   "filter": {
     "search": "Search",
     "resistome": "Enter resistome",
+    "specie": "Search by specie",
     "start_date": "Start date",
     "end_date": "End date"
   },
@@ -13,7 +14,8 @@
     "source": "Source",
     "host": "Host",
     "st": "ST",
-    "resistance_genes": "Resistance genes"
+    "resistance_genes": "Resistance genes",
+    "specie": "Specie"
   },
   "resistome": {
     "aminoglycoside": "Aminoglycoside",

@@ -2,9 +2,12 @@
   <div class="bacteria-page pa-0">
     <bacteria-map />
 
-    <experiment-filter />
+    <experiment-filter :isCovid="isCovid" />
 
-    <experiment-table class="experiment-table" />
+    <experiment-table
+      class="experiment-table"
+      :isCovid="isCovid"
+    />
   </div>
 </template>
 
@@ -30,6 +33,12 @@ const BacteriaModule = namespace('bacteria')
   },
 })
 export default class Bacteria extends Vue {
+  private get isCovid(): boolean {
+    const { name } = this.$route.params
+
+    return name === 'COVID'
+  }
+
   @BacteriaModule.Action
   private readonly fetchCoordinates!: (bacteria: string) => Promise<void>
 

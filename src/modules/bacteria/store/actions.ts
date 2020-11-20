@@ -1,12 +1,12 @@
-import { ActionContext } from 'vuex'
+import { ActionTree } from 'vuex'
 
 import BacteriaFilter from '@/modules/shared/entities/BacteriaFilter'
 import BacteriaService from '@/modules/shared/services/BacteriaService'
 import MapService from '@/modules/shared/services/MapService'
 import { BacteriaState } from './state'
 
-export default {
-  async fetchCoordinates({ commit }: ActionContext<BacteriaState, unknown>, bacteria: string): Promise<void> {
+const actions: ActionTree<BacteriaState, unknown> = {
+  async fetchCoordinates({ commit }, bacteria: string): Promise<void> {
     try {
       const { data } = await MapService.getCoordinates(bacteria)
       commit('setCoordinates', data)
@@ -15,7 +15,7 @@ export default {
       throw err
     }
   },
-  async fetchExperiments({ commit }: ActionContext<BacteriaState, unknown>, filter: BacteriaFilter): Promise<void> {
+  async fetchExperiments({ commit }, filter: BacteriaFilter): Promise<void> {
     commit('setFilter', filter)
 
     try {
@@ -27,7 +27,7 @@ export default {
       throw err
     }
   },
-  async fetchExperimentById({ commit }: ActionContext<BacteriaState, unknown>, id: number): Promise<void> {
+  async fetchExperimentById({ commit }, id: number): Promise<void> {
     try {
       const { data } = await BacteriaService.getExperimentById(id)
       commit('setExperiment', data)
@@ -36,4 +36,15 @@ export default {
       throw err
     }
   },
+  async fetchSpecies({ commit }): Promise<void> {
+    try {
+      const { data } = await Promise.resolve({ data: [] })
+      commit('setSpecies', data)
+    } catch (err) {
+      console.error(err)
+      throw err
+    }
+  },
 }
+
+export default actions
