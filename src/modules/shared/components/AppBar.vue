@@ -77,7 +77,7 @@ export default class AppBar extends Vue {
   }
 
   private get isMobile(): boolean {
-    return this.$vuetify.breakpoint.mobile
+    return this.$vuetify.breakpoint.smAndDown
   }
 
   private get isDesktop(): boolean {
