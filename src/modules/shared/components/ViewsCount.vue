@@ -40,17 +40,7 @@ export default class ViewsCount extends Vue {
   }
 
   private mounted() {
-    // TODO: remove this code when implement page view count on backend
-    const hitCounter = document.querySelector('.hitCounter') as HTMLAnchorElement|null
-
-    if (!hitCounter) return
-
-    const timerId = setInterval(() => {
-      if (!Number.isNaN(Number(hitCounter.innerText))) {
-        this.$refs.views.innerText = hitCounter.innerText
-        clearInterval(timerId)
-      }
-    }, 1000)
+    /** TODO: implement page view count */
   }
 }
 </script>

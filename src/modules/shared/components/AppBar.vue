@@ -3,7 +3,7 @@
     app
     class="app-bar white"
     elevation="1"
-    height="100"
+    :height="isMobile ? 72 : 100"
   >
     <template v-if="restrictedArea">
       <strong class="primary--text font-weight-bold ml-n1">
@@ -28,8 +28,8 @@
       <menu-dialog v-model="menu">
         <template v-slot="{ on }">
           <v-app-bar-nav-icon
-            large
             color="primary"
+            :large="isDesktop"
             v-on="on"
           />
         </template>
@@ -38,7 +38,8 @@
       <v-spacer />
 
       <router-link class="app-bar__logo" to="/">
-        <img src="@/assets/logo.svg" />
+        <img v-if="isMobile" src="@/assets/logo-mobile.svg"/>
+        <img v-else src="@/assets/logo.svg"/>
       </router-link>
     </template>
 
@@ -52,7 +53,6 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import { namespace } from 'vuex-class'
 
 import HomeIcon from '@/modules/shared/components/icons/HomeIcon.vue'
 import Icon from '@/modules/shared/components/Icon.vue'
@@ -76,25 +76,39 @@ export default class AppBar extends Vue {
     return this.$route.matched.some((record) => record.meta.auth)
   }
 
+  private get isMobile(): boolean {
+    return this.$vuetify.breakpoint.mobile
+  }
+
   private get isDesktop(): boolean {
-    return !this.$vuetify.breakpoint.mobile
+    return !this.isMobile
   }
 }
 </script>
 
 <style lang="scss" scoped>
-  .app-bar {
-    padding: 0 40px;
+@import '~vuetify/src/styles/styles.sass';
 
-    &__logo {
-      left: 50%;
-      height: 62px;
-      position: absolute;
-      transform: translateX(-50%);
+.app-bar {
+  padding: 0 40px;
 
-      img {
-        height: 100%;
-      }
+  @media #{map-get($display-breakpoints, 'sm-and-down')} {
+    padding: 0 8px;
+  }
+
+  &__logo {
+    height: 62px;
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+
+    @media #{map-get($display-breakpoints, 'sm-and-down')} {
+      height: 40px;
+    }
+
+    img {
+      height: 100%;
     }
   }
+}
 </style>

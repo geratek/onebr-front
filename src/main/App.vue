@@ -2,9 +2,9 @@
   <v-app>
     <app-bar />
 
-    <v-content>
+    <v-main>
       <router-view />
-    </v-content>
+    </v-main>
 
     <app-footer />
 
