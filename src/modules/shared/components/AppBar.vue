@@ -40,22 +40,13 @@
       <router-link class="app-bar__logo" to="/">
         <img src="@/assets/logo.svg" />
       </router-link>
-
-      <primary-button
-        v-if="!isAuthenticated"
-        :to="{ name: 'login' }"
-        class="mr-5"
-      >
-        {{ $t('shared.login') }}
-      </primary-button>
     </template>
 
-    <profile-button
-      class="mr-5"
-      v-if="isAuthenticated"
-    />
+    <template v-if="isDesktop">
+      <profile-button />
 
-    <locale-changer />
+      <locale-changer />
+    </template>
   </v-app-bar>
 </template>
 
@@ -67,10 +58,7 @@ import HomeIcon from '@/modules/shared/components/icons/HomeIcon.vue'
 import Icon from '@/modules/shared/components/Icon.vue'
 import LocaleChanger from '@/modules/shared/components/LocaleChanger.vue'
 import MenuDialog from '@/modules/shared/components/menu/MenuDialog.vue'
-import PrimaryButton from '@/modules/shared/components/PrimaryButton.vue'
 import ProfileButton from '@/modules/shared/components/ProfileButton.vue'
-
-const authModule = namespace('auth')
 
 @Component({
   components: {
@@ -78,18 +66,18 @@ const authModule = namespace('auth')
     Icon,
     LocaleChanger,
     MenuDialog,
-    PrimaryButton,
     ProfileButton,
   },
 })
 export default class AppBar extends Vue {
   private menu = false;
 
-  @authModule.Getter
-  private readonly isAuthenticated!: boolean
-
   private get restrictedArea() {
     return this.$route.matched.some((record) => record.meta.auth)
+  }
+
+  private get isDesktop(): boolean {
+    return !this.$vuetify.breakpoint.mobile
   }
 }
 </script>

@@ -36,6 +36,14 @@ export default class App extends Vue {
 </script>
 
 <style lang="scss">
+@import '~vuetify/src/styles/styles.sass';
+
+html {
+  @media #{map-get($display-breakpoints, 'sm-and-down')} {
+    font-size: 14px;
+  }
+}
+
 a {
   text-decoration: none;
 

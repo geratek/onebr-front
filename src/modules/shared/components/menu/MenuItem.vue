@@ -24,6 +24,8 @@ export default class MenuItem extends Vue {
 </script>
 
 <style lang="scss" scoped>
+@import '~vuetify/src/styles/styles.sass';
+
 .menu-item {
   display: block;
   text-align: center;
@@ -46,6 +48,14 @@ export default class MenuItem extends Vue {
   &__subtitle {
     color: #333;
     margin: 10px 0 30px;
+  }
+
+  @media #{map-get($display-breakpoints, 'sm-and-down')} {
+    margin-bottom: 14px;
+
+    &__subtitle {
+      margin: 7px 0 15px;
+    }
   }
 }
 </style>

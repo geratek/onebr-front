@@ -1,12 +1,12 @@
 <template>
   <v-btn
+    rounded
+    depressed
+    color="primary"
     v-bind="$attrs"
     v-on="$listeners"
-    rounded
-    large
-    depressed
+    :large="isDesktop"
     :outlined="!invert"
-    color="primary"
   >
     <slot />
   </v-btn>
@@ -20,5 +20,9 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 })
 export default class PrimaryButton extends Vue {
   @Prop({ default: false, type: Boolean }) private invert!: boolean
+
+  private get isDesktop(): boolean {
+    return !this.$vuetify.breakpoint.mobile
+  }
 }
 </script>
