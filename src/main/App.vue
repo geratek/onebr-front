@@ -44,6 +44,10 @@ html {
   }
 }
 
+body {
+  overflow-x: hidden;
+}
+
 a {
   text-decoration: none;
 
@@ -60,8 +64,12 @@ address {
 [class*="-page"] {
   background-position: center center;
   background-size: 100% 100%;
-  padding-bottom: 112px;
+  padding-bottom: 57px;
   padding-top: 63px;
+
+  @media #{map-get($display-breakpoints, 'md-and-up')} {
+    padding-bottom: 112px;
+  }
 }
 
 .bg-full {
@@ -74,6 +82,12 @@ address {
   .justify-space-evenly {
     justify-content: space-around; // fallback
     justify-content: space-evenly !important;
+  }
+
+  @media #{map-get($display-breakpoints, 'sm-and-down')} {
+    .display-2 {
+      font-size: 1.71rem !important;
+    }
   }
 }
 
@@ -124,6 +138,47 @@ address {
       &.v-data-table__selected {
         background: rgba(158, 200, 255, 0.5) !important;
       }
+    }
+  }
+}
+
+.glide {
+  &__slides {
+    padding: 0 !important;
+  }
+
+  &__bullets {
+    align-items: center;
+    display: flex;
+    height: 50px;
+    justify-content: center;
+  }
+
+  &__bullet {
+    background: var(--v-primary-base);
+    border-radius: 100%;
+    height: 8px;
+    margin: 0 4px;
+    opacity: 20%;
+    outline: none;
+    width: 8px;
+
+    &--active {
+      opacity: 100%;
+    }
+  }
+
+  [data-glide-el="controls"] {
+    button {
+      outline: none;
+      width: 52px;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+    }
+
+    button:last-child {
+      right: 0;
     }
   }
 }

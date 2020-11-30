@@ -1,13 +1,11 @@
 <template>
   <v-container class="home-bacteria">
-    <v-row class="justify-space-evenly">
-      <v-col
-        cols="12"
-        sm="6" md="4" lg='3'
+    <vue-glide :options="options" :bullet="$vuetify.breakpoint.smAndDown">
+      <vue-glide-slide
         v-for="bacterium in bacteria"
         :key="bacterium.name"
       >
-        <figure class="text-center">
+        <figure class="text-center pa-3">
           <img
             :alt="`Bacterium ${bacterium.name}`"
             :src="bacterium.image"
@@ -32,34 +30,72 @@
             </primary-button>
           </figcaption>
         </figure>
-      </v-col>
-    </v-row>
+      </vue-glide-slide>
+
+      <template slot="control" v-if="$vuetify.breakpoint.smAndDown">
+        <button data-glide-dir="<">
+          <Icon name="chevron_left" />
+        </button>
+        <button data-glide-dir=">">
+          <Icon name="chevron_right" />
+        </button>
+      </template>
+    </vue-glide>
   </v-container>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import { namespace } from 'vuex-class'
+import { Glide, GlideSlide } from 'vue-glide-js'
 
 import Bacteria from '@/modules/shared/entities/Bacteria'
 
 import PrimaryButton from '@/modules/shared/components/PrimaryButton.vue'
+import Icon from '@/modules/shared/components/Icon.vue'
+
+import 'vue-glide-js/dist/vue-glide.css'
 
 const SharedModule = namespace('shared')
 
 @Component({
   components: {
     PrimaryButton,
+    Icon,
+    [Glide.name]: Glide,
+    [GlideSlide.name]: GlideSlide,
   },
 })
 export default class HomeBacteria extends Vue {
   @SharedModule.State
   private readonly bacteria!: Bacteria[]
+
+  private get options(): unknown {
+    return {
+      perView: 4,
+      rewind: false,
+      bound: true,
+      breakpoints: {
+        600: {
+          perView: 1,
+        },
+        960: {
+          perView: 2,
+        },
+      },
+    }
+  }
 }
 </script>
 
 <style lang="scss" scoped>
+@import '~vuetify/src/styles/styles.sass';
+
 .home-bacteria {
-  padding: 84px 96px 0;
+  padding: 51px 0 0;
+
+  @media #{map-get($display-breakpoints, 'lg-and-up')} {
+    padding: 84px 96px 0;
+  }
 }
 </style>

@@ -46,14 +46,16 @@ export default class ViewsCount extends Vue {
 </script>
 
 <style lang="scss" scoped>
+@import '~vuetify/src/styles/styles.sass';
+
 .views-count {
   border-radius: 30px;
-  bottom: 230px;
+  bottom: 16px;
   color: white;
   opacity: .5;
   overflow: hidden;
   position: fixed;
-  right: 50px;
+  right: 16px;
   width: 50px;
   z-index: 1;
 
@@ -65,6 +67,11 @@ export default class ViewsCount extends Vue {
   &.expanded {
     width: auto;
     opacity: 1;
+  }
+
+  @media #{map-get($display-breakpoints, 'md-and-up')} {
+    bottom: 230px;
+    right: 50px;
   }
 }
 </style>
