@@ -707,7 +707,10 @@ export default class ExperimentForm extends Mixins(ValidatorMixin) {
     ['nal', 'cip', 'amc', 'atm'],
     ['fos', 'ami', 'gen', 'sxt'],
     ['eno', 'chl', 'cep', 'ctf'],
-    ['amp', 'tet', 'col'],
+    ['amp', 'tet', 'col', 'tob'],
+    ['pit', 'tig', 'lzd', 'azi'],
+    ['lxv', 'cli', 'pen', 'mup'],
+    ['van'],
   ]
 
   private deleteExperiment(id: number) {
