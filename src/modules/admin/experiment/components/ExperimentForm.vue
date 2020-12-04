@@ -501,6 +501,22 @@
               v-model="model.plamidomes"
             />
           </dialog-section>
+
+          <dialog-section :title="$t('admin.experiment.form.section.efflux_pump')">
+            <v-autocomplete
+              clearable
+              hide-details
+              multiple
+              outlined
+              return-object
+              rounded
+              item-text="name"
+              item-value="id"
+              :label="$t('admin.experiment.form.fields.efflux_pump')"
+              :items="effluxPump"
+              v-model="model.efflux_pumps"
+            />
+          </dialog-section>
         </v-form>
       </v-card-text>
 
@@ -643,6 +659,9 @@ export default class ExperimentForm extends Mixins(ValidatorMixin) {
 
   @AdminExperimentModule.Getter
   private readonly regions!: string[]
+
+  @AdminExperimentModule.Getter
+  private readonly effluxPump!: BacteriaFilterItem[]
 
   @AdminExperimentModule.Mutation
   private readonly setFormModel!: (formModel: ExperimentModel|null) => Promise<void>

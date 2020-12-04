@@ -23,6 +23,7 @@ export interface ExperimentState {
   countries: BacteriaFilterItem[];
   cities: BacteriaFilterItem[];
   regions: BacteriaFilterItem[];
+  effluxPump: BacteriaFilterItem[];
   st: string[];
 }
 
@@ -46,6 +47,7 @@ const state: ExperimentState = {
   cities: [],
   regions: [],
   st: [],
+  effluxPump: [],
 }
 
 export default state

@@ -106,6 +106,12 @@ abstract class BacteriaFilterService {
       transformResponse: defaultTransformResponse.concat(BacteriaFilterItem.fromResponse),
     })
   }
+
+  static getEffluxPump(): Promise<AxiosResponse<BacteriaFilterItem[]>> {
+    return axios.get('bacteria/filter/effluxPump', {
+      transformResponse: defaultTransformResponse.concat(BacteriaFilterItem.fromResponse),
+    })
+  }
 }
 
 export default BacteriaFilterService

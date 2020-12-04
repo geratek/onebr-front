@@ -64,4 +64,7 @@ export default {
   setSt(state: ExperimentState, st: string[]) {
     state.st = st
   },
+  setEffluxPump(state: ExperimentState, effluxPump: BacteriaFilterItem[]) {
+    state.effluxPump = effluxPump
+  },
 }

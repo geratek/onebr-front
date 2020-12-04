@@ -17,6 +17,7 @@ import Serovar from './Serovar'
 import Source from './Source'
 import Specie from './Specie'
 import Virulome from './Virulome'
+import EffluxPump from './EffluxPump'
 
 class Experiment {
   access_no_gb?: string
@@ -88,6 +89,8 @@ class Experiment {
   plamidomes: Plasmidome[] = []
 
   virulomes: Virulome[] = []
+
+  efflux_pumps: EffluxPump[] = []
 
   private constructor(json: JSON) {
     Object.assign(this, omitBy(json, isNil))

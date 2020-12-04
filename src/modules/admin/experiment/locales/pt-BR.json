@@ -44,7 +44,8 @@
       "fim_type": "Fímbria do tipo 1 (fimH)",
       "clermont_typing": "Clermont filogrupo",
       "serovar": "Sorovar",
-      "plasmidome": "Plasmidoma"
+      "plasmidome": "Plasmidoma",
+      "efflux_pump": "Bomba de efluxo"
     },
     "fields": {
       "aminoglycoside": {
@@ -174,7 +175,8 @@
       "resistome": "Resistoma",
       "researcher": "Pesquisador",
       "antigen_o": "Antigen O",
-      "antigen_h": "Antigen H"
+      "antigen_h": "Antigen H",
+      "efflux_pump": "Bomba de efluxo"
     },
     "confirm_delete_title": "Atenção!",
     "confirm_delete_message": "A exclusão de um experimento é permanente."

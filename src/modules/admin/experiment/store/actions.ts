@@ -30,8 +30,8 @@ export default {
       const { data: st } = await BacteriaFilterService.getSts()
       const [
         species, plasmidome, antigenH, antigenO,
-        virulome, heavyMetal, serovar, clermontTyping,
-        source, origin, sequencer, countries, regions, cities,
+        virulome, heavyMetal, serovar, clermontTyping, source,
+        origin, sequencer, countries, regions, cities, effluxPump,
       ] = await Promise.all([
         BacteriaFilterService.getSpecies(),
         BacteriaFilterService.getPlasmidome(),
@@ -47,6 +47,7 @@ export default {
         RegionService.getCountries(),
         RegionService.getRegions(),
         RegionService.getCities(1, ''),
+        BacteriaFilterService.getEffluxPump(),
       ])
 
       commit('setSpecies', species.data)
@@ -64,6 +65,7 @@ export default {
       commit('setCountries', countries.data)
       commit('setRegions', regions.data)
       commit('setCities', cities.data)
+      commit('setEffluxPump', effluxPump.data)
     } catch (err) {
       console.error(err)
       throw err
