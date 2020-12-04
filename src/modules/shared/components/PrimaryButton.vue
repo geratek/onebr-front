@@ -22,7 +22,7 @@ export default class PrimaryButton extends Vue {
   @Prop({ default: false, type: Boolean }) private invert!: boolean
 
   private get isDesktop(): boolean {
-    return !this.$vuetify.breakpoint.mobile
+    return this.$vuetify.breakpoint.mdAndUp
   }
 }
 </script>

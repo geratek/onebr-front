@@ -104,7 +104,7 @@ address {
 .v-dialog {
   &--top {
     align-self: flex-start;
-    margin: 140px;
+    margin-top: 140px;
   }
 }
 

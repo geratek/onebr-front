@@ -17,7 +17,6 @@ import { namespace } from 'vuex-class'
 
 import BacteriaFilter from '@/modules/shared/entities/BacteriaFilter'
 
-import AppFooter from '@/modules/shared/components/AppFooter.vue'
 import BacteriaMap from '../components/map/BacteriaMap.vue'
 import ExperimentFilter from '../components/filter/ExperimentFilter.vue'
 import ExperimentTable from '../components/table/ExperimentTable.vue'
@@ -26,7 +25,6 @@ const BacteriaModule = namespace('bacteria')
 
 @Component({
   components: {
-    AppFooter,
     BacteriaMap,
     ExperimentFilter,
     ExperimentTable,

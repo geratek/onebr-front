@@ -31,14 +31,12 @@
       </v-marker-cluster>
     </l-map>
 
-    <div class="bacteria-map__ebursts" :class="currentBacteria">
-      <a :href="$t(`bacteria.ebursts.${currentBacteria}`)" target="_blank" />
-    </div>
+    <map-ebursts />
 
     <map-control
       :fullscreen.sync="fullscreen"
-      @zoomIn="zoomInOut(1)"
-      @zoomOut="zoomInOut(-1)"
+      @zoom-in="zoomInOut(1)"
+      @zoom-out="zoomInOut(-1)"
     />
 
     <confirm-dialog
@@ -65,6 +63,7 @@ import BacteriaFilter from '@/modules/shared/entities/BacteriaFilter'
 import ConfirmDialog from '@/modules/shared/components/ConfirmDialog.vue'
 import BacteriaMenu from './BacteriaMenu.vue'
 import MapControl from './MapControl.vue'
+import MapEbursts from './MapEbursts.vue'
 
 const BacteriaModule = namespace('bacteria')
 
@@ -77,6 +76,7 @@ const BacteriaModule = namespace('bacteria')
     LTileLayer,
     MapControl,
     VMarkerCluster,
+    MapEbursts,
   },
 })
 export default class BacteriaMap extends Vue {
@@ -97,12 +97,6 @@ export default class BacteriaMap extends Vue {
 
   @BacteriaModule.Action
   private readonly fetchExperiments!: (filter: BacteriaFilter) => Promise<void>
-
-  private get currentBacteria(): string {
-    const { name } = this.$route.params
-
-    return name.toLowerCase()
-  }
 
   private fullscreen = false
 
@@ -182,16 +176,25 @@ export default class BacteriaMap extends Vue {
 @import "~leaflet.markercluster/dist/MarkerCluster.css";
 
 .bacteria-map {
-  background:  -10px -90px no-repeat url('../../../../assets/antibiograma.png'), linear-gradient(187.34deg, #f1f1f1 13.88%, #f1f1f1 69.22%, rgba(204, 204, 204, 0) 88.19%);
+  background-color: #FFF;
   box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.15) inset;
   height: 400px;
   position: relative;
   transition: all 300ms linear;
   z-index: 0;
 
+  @media #{map-get($display-breakpoints, 'md-and-up')} {
+    background: -10px -90px no-repeat url('../../../../assets/antibiograma.png'), linear-gradient(187.34deg, #f1f1f1 13.88%, #f1f1f1 69.22%, rgba(204, 204, 204, 0) 88.19%);
+  }
+
   @media screen and (max-height: 768px) {
     height: 40vh;
     min-height: 40vh;
+  }
+
+  @media #{map-get($display-breakpoints, 'sm-and-down')} {
+    height: 75vh;
+    min-height: 75vh;
   }
 
   &--full {
@@ -203,52 +206,6 @@ export default class BacteriaMap extends Vue {
   &__leaflet {
     background-color: transparent;
     height: 100%;
-  }
-
-  &__ebursts {
-    background-color: white;
-    background-size: contain;
-    bottom: 30px;
-    height: 202px;
-    right: 112px;
-    width: 225px;
-
-    &.ecbr {
-      background-image: url(../../../../assets/ebursts/ecbr.png);
-    }
-
-    &.kpbr {
-      background-image: url(../../../../assets/ebursts/kpbr.png);
-    }
-
-    &.sebr {
-      background-image: url(../../../../assets/ebursts/sebr.png);
-    }
-
-    &.covid {
-      display: none;
-    }
-
-    a {
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
-  }
-
-  .bacteria-menu, .map-control, &__ebursts {
-    position: absolute;
-    z-index: 1000;
-  }
-
-  .bacteria-menu {
-    left: 50px;
-    top: 20px;
-  }
-
-  .map-control {
-    bottom: 60px;
-    right: 65px;
   }
 }
 </style>

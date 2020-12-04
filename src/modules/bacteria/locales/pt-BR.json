@@ -99,5 +99,6 @@
   "confirm": {
     "title": "Tem certeza que deseja sair da pesquisa?",
     "message": "Se você escolher outro ponto do mapa para ver agora, o filtro da sua pesquisa será desfeito."
-  }
+  },
+  "see_more": "ver mais"
 }

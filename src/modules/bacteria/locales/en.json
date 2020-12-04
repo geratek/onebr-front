@@ -99,5 +99,6 @@
   "confirm": {
     "title": "Are you sure you want to exit the search?",
     "message": "If you choose another point on the map to see it now, your search filter will be undone."
-  }
+  },
+  "see_more": "see more"
 }

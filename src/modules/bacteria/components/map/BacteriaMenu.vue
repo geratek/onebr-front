@@ -4,11 +4,12 @@
       hide-details
       hide-selected
       rounded
+      dense
       append-icon="keyboard_arrow_down"
       background-color="white"
-      height="50"
       item-value="name"
       v-model="currentBacteria"
+      :height="$vuetify.breakpoint.smAndDown ? 40 : 50"
       :items="bacteria"
       :menu-props="menuProps"
     >
@@ -71,8 +72,26 @@ export default class BacteriaMenu extends Vue {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .bacteria-menu {
-  width: 290px;
+  left: 32px;
+  position: absolute;
+  right: 32px;
+  top: 20px;
+  z-index: 1000;
+
+  .v-input {
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  @media #{map-get($display-breakpoints, 'md-and-up')} {
+    left: 50px;
+    right: auto;
+    width: 290px;
+
+    .v-input {
+      box-shadow: none;
+    }
+  }
 }
 </style>
