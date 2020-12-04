@@ -10,5 +10,11 @@
   },
   "support": {
     "title": ""
+  },
+  "bacteria": {
+    "EcBr": "EcBr",
+    "KpBr": "KpBr",
+    "SeBr": "SeBr",
+    "COVID": "Bactérias"
   }
 }

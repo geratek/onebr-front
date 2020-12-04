@@ -14,7 +14,7 @@
           >
           <figcaption>
             <h1 class="display-1 font-weight-medium mb-2 mt-3">
-              {{ bacterium.name }}
+              {{ $t(`home.bacteria.${bacterium.name}`) }}
             </h1>
             <p class="title font-italic font-weight-regular mb-1">
               {{ bacterium.scientificName }}

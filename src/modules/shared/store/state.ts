@@ -32,8 +32,8 @@ const state: SharedState = {
     Bacteria.fromJson({
       image: 'bacteria/covid.png',
       name: 'COVID',
-      origin: 'World Wide Database',
-      scientificName: 'Sars-Cov-2',
+      origin: 'Brazilian Database',
+      scientificName: 'COVID19',
       type: 'CV_19',
     }),
   ],
