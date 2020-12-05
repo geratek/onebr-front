@@ -87,8 +87,6 @@ export default class AppBar extends Vue {
 </script>
 
 <style lang="scss" scoped>
-@import '~vuetify/src/styles/styles.sass';
-
 .app-bar {
   padding: 0 40px;
 

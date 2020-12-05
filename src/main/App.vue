@@ -36,8 +36,6 @@ export default class App extends Vue {
 </script>
 
 <style lang="scss">
-@import '~vuetify/src/styles/styles.sass';
-
 html {
   @media #{map-get($display-breakpoints, 'sm-and-down')} {
     font-size: 14px;
@@ -181,5 +179,10 @@ address {
       right: 0;
     }
   }
+}
+
+// fix for https://github.com/vuetifyjs/vuetify/issues/11553
+.v-autocomplete:not(.v-input--is-focused).v-select--chips input {
+  max-height: 25px !important;
 }
 </style>

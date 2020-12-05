@@ -2,7 +2,7 @@
   <v-form class="experiment-filter" autocomplete="off">
     <v-container>
       <v-row align="center">
-        <v-col :md="isCovid ? '4': '3'">
+        <v-col md="3">
           <v-text-field
             clearable
             outlined
@@ -17,27 +17,17 @@
             </template>
           </v-text-field>
         </v-col>
-        <v-col :md="isCovid ? '3' : '4'">
-          <v-select
-            clearable
-            outlined
-            rounded
-            hide-details
-            item-text="name"
-            item-value="type"
-            v-if="isCovid"
-            :value="filter.specie"
-            :items="species"
-            :placeholder="$t('bacteria.filter.specie')"
-            @change="applyFilter('specie', $event)"
-          >
-            <template #append>
-              <Icon name="arrow_drop_down" color="primary"/>
-            </template>
-          </v-select>
+        <v-col md="4">
+          <sub-specie-autocomplete
+            v-show="isCovid"
+            :groupId="13"
+            :value="filter.subSpecieIds"
+            :maxVisible="1"
+            @input="applyFilter('subSpecieIds', $event)"
+          />
 
           <resistome-autocomplete
-            v-else
+            v-show="!isCovid"
             :value="filter.resistomes"
             @input="applyFilter('resistomes', $event)"
           />
@@ -90,6 +80,7 @@ import DeleteIcon from '@/modules/shared/components/icons/DeleteIcon.vue'
 import SearchIcon from '@/modules/shared/components/icons/SearchIcon.vue'
 import Icon from '@/modules/shared/components/Icon.vue'
 import ResistomeAutocomplete from './ResistomeAutocomplete.vue'
+import SubSpecieAutocomplete from './SubSpecieAutocomplete.vue'
 
 const BacteriaModule = namespace('bacteria')
 
@@ -97,9 +88,10 @@ const BacteriaModule = namespace('bacteria')
   components: {
     DatePicker,
     DeleteIcon,
+    Icon,
     ResistomeAutocomplete,
     SearchIcon,
-    Icon,
+    SubSpecieAutocomplete,
   },
 })
 export default class ExperimentFilter extends Vue {
@@ -108,9 +100,6 @@ export default class ExperimentFilter extends Vue {
 
   @BacteriaModule.State
   private readonly filter!: BacteriaFilter
-
-  @BacteriaModule.State
-  private readonly species!: unknown[]
 
   @BacteriaModule.Action
   private readonly fetchExperiments!: (filter: BacteriaFilter) => Promise<void>

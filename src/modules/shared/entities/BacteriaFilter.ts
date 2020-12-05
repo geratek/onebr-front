@@ -3,7 +3,7 @@ interface BacteriaFilterInterface {
   ids?: number[];
   searchTerm?: string;
   resistomes?: number[];
-  specie?: string;
+  subSpecieIds?: number[];
   startDate?: string;
   endDate?: string;
   sort?: string[];
@@ -20,7 +20,7 @@ class BacteriaFilter implements BacteriaFilterInterface {
 
   resistomes?: number[]
 
-  specie?: string
+  subSpecieIds?: number[]
 
   startDate?: string
 
@@ -46,7 +46,7 @@ class BacteriaFilter implements BacteriaFilterInterface {
 
   toServer() {
     const {
-      startDate, endDate, resistomes, sort, page, ids, ...rest
+      startDate, endDate, resistomes, sort, page, ids, subSpecieIds, ...rest
     } = this
 
     return {
@@ -57,6 +57,7 @@ class BacteriaFilter implements BacteriaFilterInterface {
       sort: sort?.join(),
       ids: ids?.join(),
       page: page - 1,
+      subSpecieIds: subSpecieIds?.join(),
     }
   }
 }

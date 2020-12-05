@@ -2,7 +2,7 @@
   "filter": {
     "search": "O que deseja buscar?",
     "resistome": "Digite o resistoma resejado",
-    "specie": "Buscar por espécie",
+    "sub_specie": "Buscar por espécie",
     "start_date": "Data inicio",
     "end_date": "Data fim"
   },

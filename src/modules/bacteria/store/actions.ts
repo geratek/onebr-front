@@ -36,15 +36,6 @@ const actions: ActionTree<BacteriaState, unknown> = {
       throw err
     }
   },
-  async fetchSpecies({ commit }): Promise<void> {
-    try {
-      const { data } = await Promise.resolve({ data: [] })
-      commit('setSpecies', data)
-    } catch (err) {
-      console.error(err)
-      throw err
-    }
-  },
 }
 
 export default actions

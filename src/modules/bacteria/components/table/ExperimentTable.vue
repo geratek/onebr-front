@@ -158,9 +158,9 @@ export default class ExperimentTable extends Vue {
     ]
 
     if (this.isCovid) {
-      headers.push({
+      headers.splice(1, 0, {
         text: getText('specie'),
-        value: 'specieName',
+        value: 'subSpecieName',
       })
     } else {
       headers.push({

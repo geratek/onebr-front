@@ -89,8 +89,6 @@ export default class HomeBacteria extends Vue {
 </script>
 
 <style lang="scss" scoped>
-@import '~vuetify/src/styles/styles.sass';
-
 .home-bacteria {
   padding: 51px 0 0;
 

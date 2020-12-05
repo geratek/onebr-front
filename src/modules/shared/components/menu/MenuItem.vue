@@ -24,8 +24,6 @@ export default class MenuItem extends Vue {
 </script>
 
 <style lang="scss" scoped>
-@import '~vuetify/src/styles/styles.sass';
-
 .menu-item {
   display: block;
   text-align: center;

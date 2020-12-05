@@ -122,6 +122,12 @@ abstract class BacteriaFilterService {
   static getSAureusSpaType(): Promise<AxiosResponse<string[]>> {
     return axios.get('bacteria/filter/sAureusSpaType')
   }
+
+  static getSubSpecies(groupId: number): Promise<AxiosResponse<unknown[]>> {
+    return axios.get('bacteria/filter/public/specie', {
+      params: { groupId },
+    })
+  }
 }
 
 export default BacteriaFilterService

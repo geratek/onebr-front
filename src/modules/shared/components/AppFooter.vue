@@ -93,8 +93,6 @@ export default class AppFooter extends Mixins(ViewDataMixin) {
 </script>
 
 <style lang="scss" scoped>
-@import '~vuetify/src/styles/styles.sass';
-
 .footer {
   background-color: white !important;
   padding: 82px 0 0;

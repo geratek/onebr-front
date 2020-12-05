@@ -2,7 +2,7 @@
   "filter": {
     "search": "Search",
     "resistome": "Enter resistome",
-    "specie": "Search by specie",
+    "sub_specie": "Search by specie",
     "start_date": "Start date",
     "end_date": "End date"
   },

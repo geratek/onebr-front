@@ -41,8 +41,6 @@ export default class HomeHero extends Vue {
 </script>
 
 <style lang="scss" scoped>
-@import '~vuetify/src/styles/styles.sass';
-
 .home-hero {
   background-position: center center;
   background-size: 100% 100%;

@@ -46,8 +46,6 @@ export default class ViewsCount extends Vue {
 </script>
 
 <style lang="scss" scoped>
-@import '~vuetify/src/styles/styles.sass';
-
 .views-count {
   border-radius: 30px;
   bottom: 16px;

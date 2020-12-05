@@ -94,8 +94,6 @@ export default class Menu extends Vue {
 </script>
 
 <style lang="scss" scoped>
-@import '~vuetify/src/styles/styles.sass';
-
 #navigation {
   padding: 32px 0 60px;
 

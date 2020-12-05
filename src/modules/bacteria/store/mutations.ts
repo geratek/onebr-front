@@ -34,9 +34,6 @@ const mutations: MutationTree<BacteriaState> = {
       coordinate.selected = ids.includes(coordinate.id)
     })
   },
-  setSpecies(state, species: unknown[]) {
-    state.species = species
-  },
 }
 
 export default mutations
