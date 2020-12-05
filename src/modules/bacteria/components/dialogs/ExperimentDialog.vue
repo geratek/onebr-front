@@ -224,6 +224,10 @@
       <dialog-section id="plasmidome" :title="$t('bacteria.experiment_dialog.plasmidome')">
         {{ experiment.plasmidome }}
       </dialog-section>
+
+      <dialog-section id="efflux_pump" :title="$t('bacteria.experiment_dialog.efflux_pump')">
+        {{ experiment.effluxPump }}
+      </dialog-section>
     </v-sheet>
 
     <v-sheet class="pa-5 ml-3" width="216" height="100%">
@@ -275,8 +279,11 @@
         <a href="#serovar" class="subtitle-2 d-block scrollactive-item mb-2">
           {{ $t('bacteria.experiment_dialog.serovar') }}
         </a>
-        <a href="#plasmidome" class="subtitle-2 d-block scrollactive-item mb-0">
+        <a href="#plasmidome" class="subtitle-2 d-block scrollactive-item mb-2">
           {{ $t('bacteria.experiment_dialog.plasmidome') }}
+        </a>
+        <a href="#efflux_pump" class="subtitle-2 d-block scrollactive-item mb-0">
+          {{ $t('bacteria.experiment_dialog.efflux_pump') }}
         </a>
       </scrollactive>
     </v-sheet>

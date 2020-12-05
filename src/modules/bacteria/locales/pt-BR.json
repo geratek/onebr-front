@@ -97,7 +97,8 @@
     "cli": "CLI",
     "pen": "PEN",
     "mup": "MUP",
-    "van": "VAN"
+    "van": "VAN",
+    "efflux_pump": "Bomba de efluxo"
   },
   "enlarge_map": "Aumentar mapa",
   "collapse_map": "Reduzir mapa",

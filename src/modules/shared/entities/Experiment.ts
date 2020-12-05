@@ -39,7 +39,7 @@ class Experiment {
     public id?: number,
     public sequencingDate?: Date,
     public serotype?: JSON,
-
+    public effluxPump: string = '-',
   ) { }
 
   static fromResponse(response: JSON): Experiment {
@@ -80,6 +80,7 @@ class Experiment {
     if (json.plasmidome) instance.plasmidome = mapListName(json.plasmidome)
     if (json.virulome) instance.virulome = mapListName(json.virulome)
     if (json.heavy_metal) instance.heavyMetal = mapListName(json.heavy_metal)
+    if (json.effluxPump) instance.effluxPump = mapListName(json.effluxPump)
 
     if (json.serotype) {
       instance.serotype = {
