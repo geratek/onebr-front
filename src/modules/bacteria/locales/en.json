@@ -98,7 +98,9 @@
     "pen": "PEN",
     "mup": "MUP",
     "van": "VAN",
-    "efflux_pump": "Efflux pump"
+    "efflux_pump": "Efflux pump",
+    "scc_mec_element": "SCCmec element",
+    "saureus_spa_type": "SAureus spa type"
   },
   "enlarge_map": "Enlarge map",
   "collapse_map": "Collapse map",

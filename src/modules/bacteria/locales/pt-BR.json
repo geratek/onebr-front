@@ -98,7 +98,9 @@
     "pen": "PEN",
     "mup": "MUP",
     "van": "VAN",
-    "efflux_pump": "Bomba de efluxo"
+    "efflux_pump": "Bomba de efluxo",
+    "scc_mec_element": "SCCmec element",
+    "saureus_spa_type": "SAureus spa type"
   },
   "enlarge_map": "Aumentar mapa",
   "collapse_map": "Reduzir mapa",

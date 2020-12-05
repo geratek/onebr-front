@@ -40,6 +40,8 @@ class Experiment {
     public sequencingDate?: Date,
     public serotype?: JSON,
     public effluxPump: string = '-',
+    public sccMecElement: string = '-',
+    public saureusSpaType: string = '-',
   ) { }
 
   static fromResponse(response: JSON): Experiment {
@@ -81,6 +83,8 @@ class Experiment {
     if (json.virulome) instance.virulome = mapListName(json.virulome)
     if (json.heavy_metal) instance.heavyMetal = mapListName(json.heavy_metal)
     if (json.effluxPump) instance.effluxPump = mapListName(json.effluxPump)
+    if (json.scc_mec_element) instance.sccMecElement = json.scc_mec_element.name
+    if (json.s_aureus_spa_type) instance.saureusSpaType = json.s_aureus_spa_type
 
     if (json.serotype) {
       instance.serotype = {

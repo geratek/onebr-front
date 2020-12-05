@@ -145,6 +145,14 @@
         {{ experiment.st }}
       </dialog-section>
 
+      <dialog-section id="scc_mec_element" :title="$t('bacteria.experiment_dialog.scc_mec_element')">
+        {{ experiment.sccMecElement }}
+      </dialog-section>
+
+      <dialog-section id="saureus_spa_type" :title="$t('bacteria.experiment_dialog.saureus_spa_type')">
+        {{ experiment.saureusSpaType }}
+      </dialog-section>
+
       <dialog-section id="resistome" :title="$t('bacteria.experiment_dialog.resistome')">
         <v-container fluid pa-0>
           <v-row no-gutters>
@@ -248,6 +256,12 @@
         </a>
         <a href="#st" class="subtitle-2 d-block scrollactive-item mb-2">
           {{ $t('bacteria.experiment_dialog.st') }}
+        </a>
+        <a href="#scc_mec_element" class="subtitle-2 d-block scrollactive-item mb-2">
+          {{ $t('bacteria.experiment_dialog.scc_mec_element') }}
+        </a>
+        <a href="#saureus_spa_type" class="subtitle-2 d-block scrollactive-item mb-2">
+          {{ $t('bacteria.experiment_dialog.saureus_spa_type') }}
         </a>
         <a href="#resistome" class="subtitle-2 d-block scrollactive-item mb-2">
           {{ $t('bacteria.experiment_dialog.resistome') }}
