@@ -82,7 +82,7 @@ class Experiment {
     if (json.plasmidome) instance.plasmidome = mapListName(json.plasmidome)
     if (json.virulome) instance.virulome = mapListName(json.virulome)
     if (json.heavy_metal) instance.heavyMetal = mapListName(json.heavy_metal)
-    if (json.effluxPump) instance.effluxPump = mapListName(json.effluxPump)
+    if (json.efflux_pump) instance.effluxPump = mapListName(json.efflux_pump)
     if (json.scc_mec_element) instance.sccMecElement = json.scc_mec_element.name
     if (json.s_aureus_spa_type) instance.saureusSpaType = json.s_aureus_spa_type
 
