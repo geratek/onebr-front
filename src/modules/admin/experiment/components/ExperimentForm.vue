@@ -171,7 +171,7 @@
                   v-model="model.st"
                 />
               </v-col>
-              <v-col cols="12" sm="5">
+              <v-col cols="12" sm="6" md="4">
                 <v-text-field
                   outlined
                   required
@@ -180,6 +180,31 @@
                   :label="$t('admin.experiment.form.fields.researcher')"
                   :rules="[required]"
                   v-model="model.researcher_name"
+                />
+              </v-col>
+              <v-col cols="12" sm="6" md="4">
+                <v-autocomplete
+                  clearable
+                  outlined
+                  rounded
+                  hide-details
+                  return-object
+                  item-text="name"
+                  item-value="id"
+                  :label="$t('admin.experiment.form.fields.scc_mec_element')"
+                  :items="sccMecElement"
+                  v-model="model.scc_mec_element"
+                />
+              </v-col>
+              <v-col cols="12" sm="6" md="4">
+                <v-autocomplete
+                  clearable
+                  outlined
+                  rounded
+                  hide-details
+                  :label="$t('admin.experiment.form.fields.saureus_spa_type')"
+                  :items="sAureusSpaType"
+                  v-model="model.saureus_spa_type"
                 />
               </v-col>
             </v-row>
@@ -662,6 +687,12 @@ export default class ExperimentForm extends Mixins(ValidatorMixin) {
 
   @AdminExperimentModule.Getter
   private readonly effluxPump!: BacteriaFilterItem[]
+
+  @AdminExperimentModule.Getter
+  private readonly sccMecElement!: BacteriaFilterItem[]
+
+  @AdminExperimentModule.Getter
+  private readonly sAureusSpaType!: string[]
 
   @AdminExperimentModule.Mutation
   private readonly setFormModel!: (formModel: ExperimentModel|null) => Promise<void>

@@ -67,6 +67,12 @@ const getters: GetterTree<ExperimentState, unknown> = {
   effluxPump(state) {
     return state.effluxPump
   },
+  sccMecElement(state) {
+    return state.sccMecElement
+  },
+  sAureusSpaType(state) {
+    return state.sAureusSpaType
+  },
   kLocus() {
     return createOptions(100, 'K')
   },

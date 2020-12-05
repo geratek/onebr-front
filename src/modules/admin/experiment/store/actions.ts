@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { ActionContext } from 'vuex'
+import { ActionTree } from 'vuex'
 
 import i18n from '@/plugins/i18n'
 
@@ -12,8 +12,8 @@ import RegionService from '@/modules/shared/services/RegionService'
 
 import { ExperimentState } from './state'
 
-export default {
-  async fetchExperiments({ commit }: ActionContext<ExperimentState, unknown>, filter: BacteriaFilter): Promise<void> {
+const actions: ActionTree<ExperimentState, unknown> = {
+  async fetchExperiments({ commit }, filter: BacteriaFilter): Promise<void> {
     commit('setFilter', filter)
 
     try {
@@ -25,13 +25,14 @@ export default {
       throw err
     }
   },
-  async fetchBacteriaFilters({ commit }: ActionContext<ExperimentState, unknown>): Promise<void> {
+  async fetchBacteriaFilters({ commit }): Promise<void> {
     try {
       const { data: st } = await BacteriaFilterService.getSts()
+      const { data: sAureusSpaType } = await BacteriaFilterService.getSAureusSpaType()
       const [
-        species, plasmidome, antigenH, antigenO,
-        virulome, heavyMetal, serovar, clermontTyping, source,
-        origin, sequencer, countries, regions, cities, effluxPump,
+        species, plasmidome, antigenH, antigenO, virulome,
+        heavyMetal, serovar, clermontTyping, source, origin,
+        sequencer, countries, regions, cities, effluxPump, sccMecElement,
       ] = await Promise.all([
         BacteriaFilterService.getSpecies(),
         BacteriaFilterService.getPlasmidome(),
@@ -48,6 +49,7 @@ export default {
         RegionService.getRegions(),
         RegionService.getCities(1, ''),
         BacteriaFilterService.getEffluxPump(),
+        BacteriaFilterService.getSccMecElement(),
       ])
 
       commit('setSpecies', species.data)
@@ -66,12 +68,14 @@ export default {
       commit('setRegions', regions.data)
       commit('setCities', cities.data)
       commit('setEffluxPump', effluxPump.data)
+      commit('setSccMecElement', sccMecElement.data)
+      commit('setSAureusSpaType', sAureusSpaType)
     } catch (err) {
       console.error(err)
       throw err
     }
   },
-  async fetchLocalizedBacteriaFilters({ commit }: ActionContext<ExperimentState, unknown>): Promise<void> {
+  async fetchLocalizedBacteriaFilters({ commit }): Promise<void> {
     try {
       const [source, origin, countries, regions] = await Promise.all([
         BacteriaFilterService.getSources(),
@@ -89,7 +93,7 @@ export default {
       throw err
     }
   },
-  async fetchExperimentById({ commit }: ActionContext<ExperimentState, unknown>, id: number): Promise<void> {
+  async fetchExperimentById({ commit }, id: number): Promise<void> {
     try {
       const { data } = await BacteriaService.getExperimentAdminById(id)
       commit('setFormModel', data)
@@ -98,7 +102,7 @@ export default {
       throw err
     }
   },
-  async removeExperiment({ commit, dispatch, state }: ActionContext<ExperimentState, unknown>, id: number): Promise<void> {
+  async removeExperiment({ commit, dispatch, state }, id: number): Promise<void> {
     try {
       await BacteriaService.deleteExperiment(id)
 
@@ -111,7 +115,7 @@ export default {
       throw err
     }
   },
-  async saveExperiment({ commit, dispatch, state }: ActionContext<ExperimentState, unknown>, formModel: ExperimentModel): Promise<void> {
+  async saveExperiment({ commit, dispatch, state }, formModel: ExperimentModel): Promise<void> {
     const { createExperiment, updateExperiment } = BacteriaService
     const action = formModel.id ? updateExperiment : createExperiment
     const message = formModel.id ? 'updated' : 'added'
@@ -129,3 +133,5 @@ export default {
     }
   },
 }
+
+export default actions

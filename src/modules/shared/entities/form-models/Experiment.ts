@@ -18,6 +18,7 @@ import Source from './Source'
 import Specie from './Specie'
 import Virulome from './Virulome'
 import EffluxPump from './EffluxPump'
+import SccMecElement from './SccMecElement'
 
 class Experiment {
   access_no_gb?: string
@@ -91,6 +92,10 @@ class Experiment {
   virulomes: Virulome[] = []
 
   efflux_pumps: EffluxPump[] = []
+
+  scc_mec_element?: SccMecElement
+
+  saureus_spa_type?: string
 
   private constructor(json: JSON) {
     Object.assign(this, omitBy(json, isNil))

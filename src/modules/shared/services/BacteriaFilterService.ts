@@ -112,6 +112,16 @@ abstract class BacteriaFilterService {
       transformResponse: defaultTransformResponse.concat(BacteriaFilterItem.fromResponse),
     })
   }
+
+  static getSccMecElement(): Promise<AxiosResponse<BacteriaFilterItem[]>> {
+    return axios.get('bacteria/filter/sccMecElement', {
+      transformResponse: defaultTransformResponse.concat(BacteriaFilterItem.fromResponse),
+    })
+  }
+
+  static getSAureusSpaType(): Promise<AxiosResponse<string[]>> {
+    return axios.get('bacteria/filter/sAureusSpaType')
+  }
 }
 
 export default BacteriaFilterService

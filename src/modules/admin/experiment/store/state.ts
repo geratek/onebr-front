@@ -24,7 +24,9 @@ export interface ExperimentState {
   cities: BacteriaFilterItem[];
   regions: BacteriaFilterItem[];
   effluxPump: BacteriaFilterItem[];
+  sccMecElement: BacteriaFilterItem[];
   st: string[];
+  sAureusSpaType: string[];
 }
 
 const state: ExperimentState = {
@@ -48,6 +50,8 @@ const state: ExperimentState = {
   regions: [],
   st: [],
   effluxPump: [],
+  sccMecElement: [],
+  sAureusSpaType: [],
 }
 
 export default state
