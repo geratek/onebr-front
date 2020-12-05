@@ -27,6 +27,9 @@
       <p class="body-2 ma-0">
         {{ experiment.specie }}
       </p>
+      <p class="body-2 ma-0">
+        {{ experiment.subSpecie }}
+      </p>
 
       <dialog-section id="general">
         <v-container fluid pa-0>

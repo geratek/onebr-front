@@ -97,6 +97,8 @@ class Experiment {
 
   saureus_spa_type?: string
 
+  sub_specie: Specie = new Specie()
+
   private constructor(json: JSON) {
     Object.assign(this, omitBy(json, isNil))
   }

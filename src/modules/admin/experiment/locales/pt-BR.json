@@ -144,6 +144,7 @@
       "id": "ID",
       "barcode": "Barcode",
       "specie": "Specie",
+      "sub_specie": "Sub specie",
       "country": "País",
       "city": "Cidade",
       "region": "Região",

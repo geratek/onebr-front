@@ -63,12 +63,13 @@ abstract class BacteriaFilterService {
     })
   }
 
-  static getSpecies(): Promise<AxiosResponse<BacteriaFilterItem[]>> {
+  static getSpecies(groupId?: number): Promise<AxiosResponse<BacteriaFilterItem[]>> {
     /**
      * TODO: find a better way to solve this guy, this endpoint always returns 404 for
      * users that don't have species associated and is called when user try edit his profile
      */
     return axios.get('bacteria/filter/specie', {
+      params: { groupId },
       transformResponse: defaultTransformResponse.concat([
         (data) => ((data.status === 404) ? [] : data),
         BacteriaFilterItem.fromResponse,

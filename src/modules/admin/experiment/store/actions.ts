@@ -132,6 +132,16 @@ const actions: ActionTree<ExperimentState, unknown> = {
       throw err
     }
   },
+  async fetchSubSpecies(_, groupId: number) {
+    try {
+      const { data } = await BacteriaFilterService.getSpecies(groupId)
+
+      return data
+    } catch (err) {
+      console.error(err)
+      throw err
+    }
+  },
 }
 
 export default actions

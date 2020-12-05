@@ -51,6 +51,21 @@
                   v-model="model.specie"
                 />
               </v-col>
+              <v-col cols="12" sm="4" v-if="showSubSpecies">
+                <v-select
+                  clearable
+                  outlined
+                  rounded
+                  return-object
+                  item-text="name"
+                  item-value="id"
+                  style="max-width: 240px"
+                  hide-details="auto"
+                  :label="$t('admin.experiment.form.fields.sub_specie')"
+                  :items="subSpecies"
+                  v-model="model.sub_specie"
+                />
+              </v-col>
               <v-col cols="12" sm="4">
                 <v-select
                   clearable
@@ -703,6 +718,9 @@ export default class ExperimentForm extends Mixins(ValidatorMixin) {
   @AdminExperimentModule.Action
   private readonly saveExperiment!: (formModel: ExperimentModel|null) => Promise<void>
 
+  @AdminExperimentModule.Action
+  private readonly fetchSubSpecies!: (groupId: number) => Promise<BacteriaFilterItem[]>
+
   @Watch('formModel')
   updateModel(newValue: ExperimentModel|null = null) {
     if (newValue === null) {
@@ -719,6 +737,8 @@ export default class ExperimentForm extends Mixins(ValidatorMixin) {
 
   private confirmDialog = false
 
+  private subSpecies: BacteriaFilterItem[] = []
+
   private get isOpen(): boolean {
     return this.model !== null
   }
@@ -731,6 +751,10 @@ export default class ExperimentForm extends Mixins(ValidatorMixin) {
 
   private get isEditing(): boolean {
     return !!this.model?.id
+  }
+
+  private get showSubSpecies(): boolean {
+    return Boolean(this.model?.specie?.id && this.subSpecies.length)
   }
 
   private resistomeFields = [
@@ -777,6 +801,23 @@ export default class ExperimentForm extends Mixins(ValidatorMixin) {
       this.reset()
     } catch (err) {
       console.error(err)
+    }
+  }
+
+  @Watch('model.specie')
+  private async onChangeSpecie(specie?: BacteriaFilterItem) {
+    // eslint-disable-next-line
+    this.model!.sub_specie = {}
+
+    if (!specie) {
+      this.subSpecies = []
+      return
+    }
+
+    try {
+      this.subSpecies = await this.fetchSubSpecies(specie.id)
+    } catch (_) {
+      this.subSpecies = []
     }
   }
 }
