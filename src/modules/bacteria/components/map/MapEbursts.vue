@@ -62,8 +62,12 @@ export default class MapEbursts extends Vue {
   }
 
   private get eburstsImg(): string {
-    // eslint-disable-next-line
-    return require(`@/assets/ebursts/${this.currentBacteria}.png`)
+    try {
+      // eslint-disable-next-line
+      return require(`@/assets/ebursts/${this.currentBacteria}.png`)
+    } catch (_) {
+      return ''
+    }
   }
 }
 </script>
