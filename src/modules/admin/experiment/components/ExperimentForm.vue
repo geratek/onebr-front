@@ -806,18 +806,17 @@ export default class ExperimentForm extends Mixins(ValidatorMixin) {
 
   @Watch('model.specie')
   private async onChangeSpecie(specie?: BacteriaFilterItem) {
-    // eslint-disable-next-line
-    this.model!.sub_specie = {}
+    this.subSpecies = []
 
-    if (!specie) {
-      this.subSpecies = []
-      return
+    if (specie) {
+      try {
+        this.subSpecies = await this.fetchSubSpecies(specie.id)
+      } catch (_) { /** */ }
     }
 
-    try {
-      this.subSpecies = await this.fetchSubSpecies(specie.id)
-    } catch (_) {
-      this.subSpecies = []
+    if (this.model && !this.subSpecies.some((item) => item.id === this.model?.sub_specie?.id)) {
+      // eslint-disable-next-line
+      this.model!.sub_specie = {}
     }
   }
 }

@@ -60,11 +60,7 @@
 </template>
 
 <script lang="ts">
-import {
-  Component, Watch, Prop, Vue,
-} from 'vue-property-decorator'
-
-import { debounce } from '@/modules/shared/utils/functions'
+import { Component, Prop, Vue } from 'vue-property-decorator'
 
 import BacteriaFilterService from '@/modules/shared/services/BacteriaFilterService'
 
