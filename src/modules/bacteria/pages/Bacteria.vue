@@ -1,13 +1,12 @@
 <template>
-  <div class="bacteria-page pa-0">
+  <div class="bacteria-page" :style="{ height: `calc(100vh - ${$vuetify.application.top}px)` }">
     <bacteria-map />
 
-    <experiment-filter :isCovid="isCovid" />
+    <swipeable-bottom-sheet v-if="$vuetify.breakpoint.smAndDown">
+      <experiment-table />
+    </swipeable-bottom-sheet>
 
-    <experiment-table
-      class="experiment-table"
-      :isCovid="isCovid"
-    />
+    <experiment-table v-else />
   </div>
 </template>
 
@@ -17,8 +16,8 @@ import { namespace } from 'vuex-class'
 
 import BacteriaFilter from '@/modules/shared/entities/BacteriaFilter'
 
+import SwipeableBottomSheet from '@/modules/shared/components/SwipeableBottomSheet.vue'
 import BacteriaMap from '../components/map/BacteriaMap.vue'
-import ExperimentFilter from '../components/filter/ExperimentFilter.vue'
 import ExperimentTable from '../components/table/ExperimentTable.vue'
 
 const BacteriaModule = namespace('bacteria')
@@ -26,17 +25,11 @@ const BacteriaModule = namespace('bacteria')
 @Component({
   components: {
     BacteriaMap,
-    ExperimentFilter,
     ExperimentTable,
+    SwipeableBottomSheet,
   },
 })
 export default class Bacteria extends Vue {
-  private get isCovid(): boolean {
-    const { name } = this.$route.params
-
-    return name === 'COVID'
-  }
-
   @BacteriaModule.Action
   private readonly fetchCoordinates!: (bacteria: string) => Promise<void>
 
@@ -96,12 +89,11 @@ export default class Bacteria extends Vue {
 .bacteria-page {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 100px);
   overflow: hidden;
+  padding: 0 0 40px;
 
-  .experiment-table {
-    flex-grow: 1;
-    overflow-y: scroll;
+  @media #{map-get($display-breakpoints, 'md-and-up')} {
+    padding: 0;
   }
 }
 </style>

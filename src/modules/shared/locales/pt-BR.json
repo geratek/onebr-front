@@ -63,5 +63,7 @@
 	"default_server_error": "Ocorreu um erro",
 	"messages": {
 		"profile_updated": "Perfil atualizado"
-	}
+	},
+	"start": "Inicio",
+	"end": "fim"
 }

@@ -193,8 +193,10 @@ export default class BacteriaMap extends Vue {
   }
 
   @media #{map-get($display-breakpoints, 'sm-and-down')} {
-    height: 75vh;
-    min-height: 75vh;
+    box-shadow: none;
+    flex-grow: 1;
+    height: auto;
+    min-height: auto;
   }
 
   &--full {

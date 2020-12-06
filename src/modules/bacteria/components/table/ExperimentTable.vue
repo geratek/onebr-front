@@ -1,10 +1,13 @@
 <template>
-  <v-container pa-0>
+  <v-container experiment-table>
+    <experiment-filter :isCovid="isCovid" />
+
     <v-data-table
       dense
       disable-pagination
       hide-default-footer
       class="--striped --clickable"
+      mobile-breakpoint="0"
       v-model="selected"
       :options.sync="options"
       :server-items-length="experiments.length"
@@ -57,7 +60,7 @@
 
 <script lang="ts">
 import {
-  Component, Watch, Prop, Vue,
+  Component, Watch, Vue,
 } from 'vue-property-decorator'
 import { DataTableHeader } from 'vuetify'
 import { namespace } from 'vuex-class'
@@ -70,20 +73,19 @@ import { Pageable } from '@/modules/shared/entities/Pagination'
 import Pagination from '@/modules/shared/components/Pagination.vue'
 import ExperimentDialog from '../dialogs/ExperimentDialog.vue'
 import ResistomeDialog from '../dialogs/ResistomeDialog.vue'
+import ExperimentFilter from '../filter/ExperimentFilter.vue'
 
 const BacteriaModule = namespace('bacteria')
 
 @Component({
   components: {
     ExperimentDialog,
-    ResistomeDialog,
+    ExperimentFilter,
     Pagination,
+    ResistomeDialog,
   },
 })
 export default class ExperimentTable extends Vue {
-  @Prop({ default: false })
-  private readonly isCovid!: boolean
-
   @BacteriaModule.State
   private readonly experiments!: ExperimentListItem[]
 
@@ -196,6 +198,12 @@ export default class ExperimentTable extends Vue {
     this.fetchExperiments(newFilter)
   }
 
+  private get isCovid(): boolean {
+    const { name } = this.$route.params
+
+    return name === 'COVID'
+  }
+
   private showResistome(resistome: Resistome) {
     this.setResistome(resistome)
     this.resistomeDialog = true
@@ -226,7 +234,20 @@ export default class ExperimentTable extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.pagination {
-  margin: 30px auto 20px;
+.experiment-table {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow: hidden;
+  padding: 0;
+
+  .v-data-table {
+    flex-grow: 1;
+    overflow-y: scroll;
+  }
+
+  .pagination {
+    margin: 30px auto 20px;
+  }
 }
 </style>
