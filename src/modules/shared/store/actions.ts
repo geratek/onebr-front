@@ -3,6 +3,7 @@ import { ActionTree } from 'vuex'
 
 import i18n from '@/plugins/i18n'
 
+import AnalyticsService from '@/modules/shared/services/AnalyticsService'
 import BacteriaFilterService from '@/modules/shared/services/BacteriaFilterService'
 import UserService from '@/modules/shared/services/UserService'
 
@@ -33,6 +34,10 @@ const actions: ActionTree<SharedState, unknown> = {
       console.error(err)
       throw err
     }
+  },
+  async fetchTotalViews({ commit }, path = '/'): Promise<void> {
+    const { data } = await AnalyticsService.totalViews(path)
+    commit('setTotalViews', data.count)
   },
 }
 

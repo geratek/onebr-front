@@ -6,7 +6,7 @@
       </v-btn>
 
       <span class="subtitle-2 text-no-wrap mr-2">
-        <span ref="views">0</span> {{ $t('shared.views') }}
+        <span ref="views">{{ totalViews }}</span> {{ $t('shared.views') }}
       </span>
 
       <v-btn icon large @click="toggleExpand(false)">
@@ -18,9 +18,12 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
+import { namespace } from 'vuex-class'
 
 import GlobalIcon from '@/modules/shared/components/icons/GlobalIcon.vue'
 import Icon from '@/modules/shared/components/Icon.vue'
+
+const SharedModule = namespace('shared')
 
 @Component({
   components: {
@@ -33,6 +36,12 @@ export default class ViewsCount extends Vue {
     views: HTMLSpanElement;
   }
 
+  @SharedModule.State
+  private readonly totalViews!: number
+
+  @SharedModule.Action
+  private readonly fetchTotalViews!: () => Promise<void>
+
   private expanded = false
 
   private toggleExpand(expanded: boolean) {
@@ -40,7 +49,7 @@ export default class ViewsCount extends Vue {
   }
 
   private mounted() {
-    /** TODO: implement page view count */
+    this.fetchTotalViews()
   }
 }
 </script>

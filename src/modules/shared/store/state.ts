@@ -4,6 +4,7 @@ import BacteriaFilterItem from '@/modules/shared/entities/BacteriaFilterItem'
 export interface SharedState {
   bacteria: Bacteria[];
   species: BacteriaFilterItem[];
+  totalViews: number;
 }
 
 const state: SharedState = {
@@ -38,6 +39,7 @@ const state: SharedState = {
     }),
   ],
   species: [],
+  totalViews: 0,
 }
 
 export default state
