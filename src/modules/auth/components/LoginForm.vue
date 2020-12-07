@@ -12,7 +12,6 @@
       name="userName"
       type="email"
       hide-details="auto"
-      class="email-text-field"
       v-model="form.username"
       :rules="[required]"
       :placeholder="$t('auth.form.labels.login')"
@@ -24,7 +23,6 @@
       name="password"
       type="password"
       hide-details="auto"
-      class="password-text-field"
       v-model="form.password"
       :rules="[required]"
       :placeholder="$t('auth.form.labels.password')"
@@ -90,19 +88,19 @@ export default class LoginForm extends Mixins(ValidatorMixin) {
     margin: 92px 0 36px;
   }
 
-  .email-text-field:not(.error--text) {
+  .v-input:not(.error--text) {
     margin-bottom: 16px;
+
+    &:last-of-type {
+      margin-bottom: 24px;
+    }
 
     @media #{map-get($display-breakpoints, 'md-and-up')} {
       margin-bottom: 20px;
-    }
-  }
 
-  .password-text-field:not(.error--text) {
-    margin-bottom: 24px;
-
-    @media #{map-get($display-breakpoints, 'md-and-up')} {
-      margin-bottom: 40px;
+      &:last-of-type {
+        margin-bottom: 40px;
+      }
     }
   }
 }

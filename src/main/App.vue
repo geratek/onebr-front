@@ -62,12 +62,10 @@ address {
 [class*="-page"] {
   background-position: center center;
   background-size: 100% 100%;
-  padding-bottom: 57px;
-  padding-top: 12px;
+  padding: 12px 20px 57px;
 
   @media #{map-get($display-breakpoints, 'md-and-up')} {
-    padding-bottom: 112px;
-    padding-top: 63px;
+    padding: 63px 0 112px;
   }
 }
 

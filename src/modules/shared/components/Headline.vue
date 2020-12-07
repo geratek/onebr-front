@@ -3,7 +3,7 @@
     <h1 class="display-2 primary--text" :class="{ dense }">
       {{ title }}
     </h1>
-    <p class="body-2 mb-0 mt-2" v-if="subtitle">
+    <p class="body-2 mb-0 mt-1 mt-sm-2" v-if="subtitle">
       {{ subtitle }}
     </p>
   </div>

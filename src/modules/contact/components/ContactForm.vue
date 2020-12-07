@@ -5,13 +5,14 @@
     class="contact-form"
     @submit.prevent="submit()"
   >
-    <h2 class="headline mb-9">
+    <h2 class="headline contact-form__title">
       {{ $t('contact.form.title') }}
     </h2>
     <v-text-field
       outlined
       required
       rounded
+      hide-details="auto"
       name="name"
       v-model="model.name"
       :rules="[required]"
@@ -21,6 +22,7 @@
       outlined
       required
       rounded
+      hide-details="auto"
       name="email"
       type="email"
       v-model="model.email"
@@ -30,6 +32,7 @@
     <v-text-field
       outlined
       rounded
+      hide-details="auto"
       type="tel"
       name="telephone"
       v-model="model.telephone"
@@ -42,6 +45,7 @@
       outlined
       required
       rounded
+      hide-details="auto"
       name="message"
       v-model="model.message"
       :rules="[required]"
@@ -91,3 +95,33 @@ export default class ContactForm extends Mixins(ValidatorMixin) {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.contact-form {
+  &__title {
+    font-size: 17px !important;
+    margin-bottom: 20px;
+
+    @media #{map-get($display-breakpoints, 'md-and-up')} {
+      font-size: 24px !important;
+      margin-bottom: 36px;
+    }
+  }
+
+  .v-input:not(.error--text) {
+    margin-bottom: 16px;
+
+    &:last-of-type {
+      margin-bottom: 24px;
+    }
+
+    @media #{map-get($display-breakpoints, 'md-and-up')} {
+      margin-bottom: 20px;
+
+      &:last-of-type {
+        margin-bottom: 40px;
+      }
+    }
+  }
+}
+</style>

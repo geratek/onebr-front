@@ -22,13 +22,23 @@ export default class ContactSheet extends Vue {}
   border-radius: 10px;
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
   display: flex;
-  margin: 94px auto 0;
+  margin: 40px auto 0;
   max-width: 1120px;
   overflow: hidden;
+  flex-direction: column-reverse;
+
+  @media #{map-get($display-breakpoints, 'md-and-up')} {
+    flex-direction: row;
+    margin-top: 94px;
+  }
 
   &__item {
-    padding: 50px;
-    width: 50%;
+    padding: 24px 16px 30px;
+
+    @media #{map-get($display-breakpoints, 'md-and-up')} {
+      padding: 50px;
+      width: 50%;
+    }
 
     &:last-child {
       background: #f8fbff;

@@ -46,6 +46,8 @@ export default class Contact extends Mixins(ViewDataMixin) {
 
 <style lang="scss" scoped>
 .contact-page {
-  background-image: url(../../../assets/contact_bg.png);
+  @media #{map-get($display-breakpoints, 'md-and-up')} {
+    background-image: url(../../../assets/contact_bg.png);
+  }
 }
 </style>

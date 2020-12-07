@@ -1,9 +1,9 @@
 <template>
   <section class="contact-address">
-    <h2 class="body-1">
+    <h2 class="body-1 contact-address__title">
       {{ $t('contact.find_us') }}
     </h2>
-    <address class="caption">
+    <address class="caption contact-address__address">
       <strong class="d-block">
         {{ $t('shared.footer.address.line.1') }}
       </strong>
@@ -29,8 +29,17 @@ export default class ContactAddress extends Vue {}
 
 <style lang="scss" scoped>
 .contact-address {
-  address {
-    margin: 20px 0 98px;
+  &__title {
+    font-size: 16px !important;
+  }
+
+  &__address {
+    font-size: 12px !important;
+    margin: 20px 0 26px;
+
+    @media #{map-get($display-breakpoints, 'md-and-up')} {
+      margin-bottom: 98px;
+    }
   }
 }
 </style>
