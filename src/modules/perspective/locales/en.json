@@ -1,0 +1,15 @@
+{
+  "headline": {
+    "title": "",
+    "subtitle": ""
+  },
+  "items": {
+    "1": "Develop a model to predict the Minimum Inhibitory Concentration (MIC) based on public genomic data and maching learning techniques such as random forest, artificial neural networks, among others. This model can be implemented in a web framework on the OneBR site in prototype model to reach the public.",
+    "2": "Develop a pipeline within the OneBR page to search for genes (Resistance, virulence, heavy metals), using free access tools such as ABRicate, among others",
+    "3": "Develop a database for Enteroccocus spp.",
+    "4": "Develop a database for Pseudomonas aeruginosa",
+    "5": "Develop a database for Acinetobacter Baumannii",
+    "6": "Develop a database for Mycobacterium tuberculosis",
+    "7": "Develop a database for latin america -OneLA (Peru, Colombia, Ecuador, Chile, Argentina, etc)"
+  }
+}

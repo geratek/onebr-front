@@ -12,6 +12,7 @@ export const enum ViewDataScope {
   restrictedExperiment = 'RESTRICTED_EXPERIMENT',
   restrictedUser = 'RESTRICTED_USER',
   restrictedPublication = 'RESTRICTED_PUBLICATION',
+  perspective = 'PERSPECTIVE',
 }
 
 export interface ViewDataItem {
