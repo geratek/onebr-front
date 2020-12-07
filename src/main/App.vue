@@ -63,10 +63,11 @@ address {
   background-position: center center;
   background-size: 100% 100%;
   padding-bottom: 57px;
-  padding-top: 63px;
+  padding-top: 12px;
 
   @media #{map-get($display-breakpoints, 'md-and-up')} {
     padding-bottom: 112px;
+    padding-top: 63px;
   }
 }
 

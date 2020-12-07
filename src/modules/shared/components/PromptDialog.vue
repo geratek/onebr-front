@@ -1,6 +1,7 @@
 <template>
   <v-dialog
     persistent
+    class="prompt-dialog"
     content-class="v-dialog--top"
     width="430"
     :value="value"
@@ -10,7 +11,7 @@
       <slot name="activator" v-bind="slotProps" />
     </template>
 
-    <v-sheet class="pa-10">
+    <v-sheet class="prompt-dialog__content">
       <h2 class="subtitle-1 font-weight-medium">
         {{ message }}
       </h2>
@@ -68,3 +69,15 @@ export default class PromptDialog extends Mixins(ValidatorMixin) {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.prompt-dialog {
+  &__content {
+    padding: 30px 20px;
+
+    @media #{map-get($display-breakpoints, 'md-and-up')} {
+      padding: 40px;
+    }
+  }
+}
+</style>
