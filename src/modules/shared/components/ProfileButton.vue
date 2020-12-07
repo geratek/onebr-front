@@ -1,5 +1,9 @@
 <template>
-  <div>
+  <div
+    class="mr-5"
+    v-if="isAuthenticated"
+    @click="e => e.stopImmediatePropagation()"
+  >
     <v-menu
       left
       offset-y
@@ -35,6 +39,14 @@
 
     <profile-form v-model="userProfile" />
   </div>
+
+  <primary-button
+    v-else
+    class="mr-5"
+    :to="{ name: 'login' }"
+  >
+    {{ $t('shared.login') }}
+  </primary-button>
 </template>
 
 <script lang="ts">
@@ -63,6 +75,9 @@ export default class ProfileButton extends Vue {
 
   @authModule.Getter
   private readonly userId!: number
+
+  @authModule.Getter
+  private readonly isAuthenticated!: boolean
 
   @authModule.Action
   private readonly logout!: () => Promise<void>

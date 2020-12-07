@@ -4,6 +4,7 @@ import BacteriaFilterItem from '@/modules/shared/entities/BacteriaFilterItem'
 export interface SharedState {
   bacteria: Bacteria[];
   species: BacteriaFilterItem[];
+  totalViews: number;
 }
 
 const state: SharedState = {
@@ -29,8 +30,16 @@ const state: SharedState = {
       scientificName: 'Salmonella enterica',
       type: 'SE_BR',
     }),
+    Bacteria.fromJson({
+      image: 'bacteria/covid.png',
+      name: 'COVID',
+      origin: 'Brazilian Database',
+      scientificName: 'COVID19',
+      type: 'CV_19',
+    }),
   ],
   species: [],
+  totalViews: 0,
 }
 
 export default state

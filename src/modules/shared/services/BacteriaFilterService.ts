@@ -63,12 +63,13 @@ abstract class BacteriaFilterService {
     })
   }
 
-  static getSpecies(): Promise<AxiosResponse<BacteriaFilterItem[]>> {
+  static getSpecies(groupId?: number): Promise<AxiosResponse<BacteriaFilterItem[]>> {
     /**
      * TODO: find a better way to solve this guy, this endpoint always returns 404 for
      * users that don't have species associated and is called when user try edit his profile
      */
     return axios.get('bacteria/filter/specie', {
+      params: { groupId },
       transformResponse: defaultTransformResponse.concat([
         (data) => ((data.status === 404) ? [] : data),
         BacteriaFilterItem.fromResponse,
@@ -104,6 +105,28 @@ abstract class BacteriaFilterService {
   static getSequencer(): Promise<AxiosResponse<BacteriaFilterItem[]>> {
     return axios.get('bacteria/filter/sequencer', {
       transformResponse: defaultTransformResponse.concat(BacteriaFilterItem.fromResponse),
+    })
+  }
+
+  static getEffluxPump(): Promise<AxiosResponse<BacteriaFilterItem[]>> {
+    return axios.get('bacteria/filter/effluxPump', {
+      transformResponse: defaultTransformResponse.concat(BacteriaFilterItem.fromResponse),
+    })
+  }
+
+  static getSccMecElement(): Promise<AxiosResponse<BacteriaFilterItem[]>> {
+    return axios.get('bacteria/filter/sccMecElement', {
+      transformResponse: defaultTransformResponse.concat(BacteriaFilterItem.fromResponse),
+    })
+  }
+
+  static getSAureusSpaType(): Promise<AxiosResponse<string[]>> {
+    return axios.get('bacteria/filter/sAureusSpaType')
+  }
+
+  static getSubSpecies(groupId: number): Promise<AxiosResponse<unknown[]>> {
+    return axios.get('bacteria/filter/public/specie', {
+      params: { groupId },
     })
   }
 }

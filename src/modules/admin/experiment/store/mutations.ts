@@ -1,3 +1,5 @@
+import { MutationTree } from 'vuex'
+
 import BacteriaFilter from '@/modules/shared/entities/BacteriaFilter'
 import ExperimentListItem from '@/modules/shared/entities/ExperimentListItem'
 import BacteriaFilterItem from '@/modules/shared/entities/BacteriaFilterItem'
@@ -6,62 +8,73 @@ import ExperimentModel from '@/modules/shared/entities/form-models/Experiment'
 import { Pageable } from '@/modules/shared/entities/Pagination'
 import { ExperimentState } from './state'
 
-export default {
-  setExperiments(state: ExperimentState, experiments: ExperimentListItem[]) {
+const mutations: MutationTree<ExperimentState> = {
+  setExperiments(state, experiments: ExperimentListItem[]) {
     state.experiments = experiments
   },
-  setFilter(state: ExperimentState, filter: BacteriaFilter) {
+  setFilter(state, filter: BacteriaFilter) {
     state.filter = filter
   },
-  setPageable(state: ExperimentState, pageable: Pageable) {
+  setPageable(state, pageable: Pageable) {
     state.pageable = pageable
   },
-  setFormModel(state: ExperimentState, formModel: ExperimentModel|null) {
+  setFormModel(state, formModel: ExperimentModel | null) {
     state.formModel = formModel
   },
-  setSpecies(state: ExperimentState, species: BacteriaFilterItem[]) {
+  setSpecies(state, species: BacteriaFilterItem[]) {
     state.species = species
   },
-  setPlasmidome(state: ExperimentState, plasmidome: BacteriaFilterItem[]) {
+  setPlasmidome(state, plasmidome: BacteriaFilterItem[]) {
     state.plasmidome = plasmidome
   },
-  setAntigenH(state: ExperimentState, antigenH: BacteriaFilterItem[]) {
+  setAntigenH(state, antigenH: BacteriaFilterItem[]) {
     state.antigenH = antigenH
   },
-  setAntigenO(state: ExperimentState, antigenO: BacteriaFilterItem[]) {
+  setAntigenO(state, antigenO: BacteriaFilterItem[]) {
     state.antigenO = antigenO
   },
-  setVirulome(state: ExperimentState, virulome: BacteriaFilterItem[]) {
+  setVirulome(state, virulome: BacteriaFilterItem[]) {
     state.virulome = virulome
   },
-  setHeavyMetal(state: ExperimentState, heavyMetal: BacteriaFilterItem[]) {
+  setHeavyMetal(state, heavyMetal: BacteriaFilterItem[]) {
     state.heavyMetal = heavyMetal
   },
-  setSerovar(state: ExperimentState, serovar: BacteriaFilterItem[]) {
+  setSerovar(state, serovar: BacteriaFilterItem[]) {
     state.serovar = serovar
   },
-  setClermontTyping(state: ExperimentState, clermontTyping: BacteriaFilterItem[]) {
+  setClermontTyping(state, clermontTyping: BacteriaFilterItem[]) {
     state.clermontTyping = clermontTyping
   },
-  setSequencer(state: ExperimentState, sequencer: BacteriaFilterItem[]) {
+  setSequencer(state, sequencer: BacteriaFilterItem[]) {
     state.sequencer = sequencer
   },
-  setCountries(state: ExperimentState, countries: BacteriaFilterItem[]) {
+  setCountries(state, countries: BacteriaFilterItem[]) {
     state.countries = countries
   },
-  setCities(state: ExperimentState, cities: BacteriaFilterItem[]) {
+  setCities(state, cities: BacteriaFilterItem[]) {
     state.cities = cities
   },
-  setRegions(state: ExperimentState, regions: BacteriaFilterItem[]) {
+  setRegions(state, regions: BacteriaFilterItem[]) {
     state.regions = regions
   },
-  setSources(state: ExperimentState, source: BacteriaFilterItem[]) {
+  setSources(state, source: BacteriaFilterItem[]) {
     state.source = source
   },
-  setOrigin(state: ExperimentState, origin: BacteriaFilterItem[]) {
+  setOrigin(state, origin: BacteriaFilterItem[]) {
     state.origin = origin
   },
-  setSt(state: ExperimentState, st: string[]) {
+  setSt(state, st: string[]) {
     state.st = st
   },
+  setEffluxPump(state, effluxPump: BacteriaFilterItem[]) {
+    state.effluxPump = effluxPump
+  },
+  setSccMecElement(state, sccMecElement: BacteriaFilterItem[]) {
+    state.sccMecElement = sccMecElement
+  },
+  setSAureusSpaType(state, sAureusSpaType: string[]) {
+    state.sAureusSpaType = sAureusSpaType
+  },
 }
+
+export default mutations

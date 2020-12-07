@@ -56,10 +56,16 @@ export default class Publications extends Mixins(ViewDataMixin) {
 
 <style lang="scss" scoped>
 .publications-page {
-  background-image: url(../../../assets/publication_bg.png);
+  @media #{map-get($display-breakpoints, 'md-and-up')} {
+    background-image: url(../../../assets/publication_bg.png);
+  }
 
   .mascot {
-    margin: 48px auto 90px;
+    margin: 32px auto 40px;
+
+    @media #{map-get($display-breakpoints, 'md-and-up')} {
+      margin: 48px auto 90px;
+    }
   }
 }
 </style>

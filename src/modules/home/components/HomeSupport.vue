@@ -1,25 +1,38 @@
 <template>
-  <v-container px-9>
+  <v-container px-0 px-md-9>
     <v-row>
       <v-col>
-        <h2 class="display-2 primary--text mb-8 pl-4 ml-12">
+        <h2 class="display-2 primary--text mb-8 pl-7 pl-md-4 ml-md-12">
           {{ $t('home.support.title') }}
         </h2>
-        <v-slide-group show-arrows>
-          <v-slide-item
-            v-for="(image, index) in supportImages"
-            :key="image.id"
-            :class="{ 'mr-6': index != (supportImages.length-1) }"
+
+        <div class="glide-container">
+          <vue-glide
+            v-if="supportImages.length"
+            :options="options"
           >
-            <v-img
-              contain
-              max-height="100"
-              width="148"
-              :alt="image.tooltip"
-              :src="image.src"
-            />
-          </v-slide-item>
-        </v-slide-group>
+            <vue-glide-slide
+              v-for="image in supportImages"
+              :key="image.id"
+            >
+              <v-img
+                contain
+                max-height="100"
+                :alt="image.tooltip"
+                :src="image.src"
+              />
+            </vue-glide-slide>
+
+            <template slot="control">
+              <button data-glide-dir="<">
+                <Icon name="chevron_left" />
+              </button>
+              <button data-glide-dir=">">
+                <Icon name="chevron_right" />
+              </button>
+            </template>
+          </vue-glide>
+        </div>
       </v-col>
     </v-row>
   </v-container>
@@ -28,14 +41,65 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import { namespace } from 'vuex-class'
+import { Glide, GlideSlide } from 'vue-glide-js'
 
 import Image from '@/modules/shared/entities/Image'
 
+import Icon from '@/modules/shared/components/Icon.vue'
+
 const HomeModule = namespace('home')
 
-@Component
+@Component({
+  components: {
+    Icon,
+    [Glide.name]: Glide,
+    [GlideSlide.name]: GlideSlide,
+  },
+})
 export default class HomeSupport extends Vue {
   @HomeModule.Getter
   private readonly supportImages!: Image[]
+
+  private get options(): unknown {
+    return {
+      perView: 8,
+      bound: true,
+      gap: 18,
+      rewind: false,
+      breakpoints: {
+        600: {
+          perView: 2,
+        },
+        960: {
+          perView: 4,
+        },
+        1024: {
+          perView: 6,
+        },
+      },
+    }
+  }
 }
 </script>
+
+<style lang="scss" scoped>
+.glide-container {
+  padding: 0 52px;
+}
+
+.glide {
+  &::v-deep &__slides {
+    align-items: center;
+  }
+
+  [data-glide-el="controls"] {
+    button:first-child {
+      left: -52px;
+    }
+
+    button:last-child {
+      right: -52px;
+    }
+  }
+}
+</style>

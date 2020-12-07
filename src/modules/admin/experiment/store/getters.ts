@@ -1,66 +1,77 @@
+import { GetterTree } from 'vuex'
+
 import { ExperimentState } from './state'
 
 function createOptions(length: number, pad: string) {
   return Array.from({ length }, (_, index) => `${pad}${index + 1}`).concat(['NA', '-'])
 }
 
-export default {
-  experiments(state: ExperimentState) {
+const getters: GetterTree<ExperimentState, unknown> = {
+  experiments(state) {
     return state.experiments
   },
-  filter(state: ExperimentState) {
+  filter(state) {
     return state.filter
   },
-  pageable(state: ExperimentState) {
+  pageable(state) {
     return state.pageable
   },
-  formModel(state: ExperimentState) {
+  formModel(state) {
     return state.formModel
   },
-  species(state: ExperimentState) {
+  species(state) {
     return state.species
   },
-  plasmidome(state: ExperimentState) {
+  plasmidome(state) {
     return state.plasmidome
   },
-  antigenH(state: ExperimentState) {
+  antigenH(state) {
     return state.antigenH
   },
-  antigenO(state: ExperimentState) {
+  antigenO(state) {
     return state.antigenO
   },
-  virulome(state: ExperimentState) {
+  virulome(state) {
     return state.virulome
   },
-  heavyMetal(state: ExperimentState) {
+  heavyMetal(state) {
     return state.heavyMetal
   },
-  serovar(state: ExperimentState) {
+  serovar(state) {
     return state.serovar
   },
-  clermontTyping(state: ExperimentState) {
+  clermontTyping(state) {
     return state.clermontTyping
   },
-  sequencer(state: ExperimentState) {
+  sequencer(state) {
     return state.sequencer
   },
-  st(state: ExperimentState) {
+  st(state) {
     return state.st
   },
-  source(state: ExperimentState) {
+  source(state) {
     return state.source
   },
-  origin(state: ExperimentState) {
+  origin(state) {
     return state.origin
   },
-  countries(state: ExperimentState) {
+  countries(state) {
     return state.countries
   },
-  cities(state: ExperimentState) {
+  cities(state) {
     return state.cities
   },
-  regions(state: ExperimentState) {
+  regions(state) {
     return state.regions
+  },
+  effluxPump(state) {
+    return state.effluxPump
+  },
+  sccMecElement(state) {
+    return state.sccMecElement
+  },
+  sAureusSpaType(state) {
+    return state.sAureusSpaType
   },
   kLocus() {
     return createOptions(100, 'K')
@@ -75,3 +86,5 @@ export default {
     return createOptions(200, 'fimH')
   },
 }
+
+export default getters

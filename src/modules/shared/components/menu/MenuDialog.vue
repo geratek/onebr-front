@@ -4,6 +4,7 @@
     content-class="menu-dialog"
     transition="scroll-y-transition"
     :value="value"
+    :fullscreen="$vuetify.breakpoint.mobile"
     @input="$emit('input', $event)"
   >
     <template #activator="slotProps">

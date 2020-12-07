@@ -29,6 +29,11 @@ export default class Login extends Vue {}
 
 <style lang="scss" scoped>
 .login-page {
-  background-image: url(../../../assets/login_bg.png);
+  padding-left: 48px;
+  padding-right: 48px;
+
+  @media #{map-get($display-breakpoints, 'md-and-up')} {
+    background-image: url(../../../assets/login_bg.png);
+  }
 }
 </style>

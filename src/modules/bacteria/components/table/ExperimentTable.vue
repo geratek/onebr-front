@@ -1,10 +1,13 @@
 <template>
-  <v-container pa-0>
+  <v-container experiment-table>
+    <experiment-filter :isCovid="isCovid" />
+
     <v-data-table
       dense
       disable-pagination
       hide-default-footer
       class="--striped --clickable"
+      mobile-breakpoint="0"
       v-model="selected"
       :options.sync="options"
       :server-items-length="experiments.length"
@@ -56,7 +59,9 @@
 </template>
 
 <script lang="ts">
-import { Component, Watch, Vue } from 'vue-property-decorator'
+import {
+  Component, Watch, Vue,
+} from 'vue-property-decorator'
 import { DataTableHeader } from 'vuetify'
 import { namespace } from 'vuex-class'
 
@@ -68,14 +73,16 @@ import { Pageable } from '@/modules/shared/entities/Pagination'
 import Pagination from '@/modules/shared/components/Pagination.vue'
 import ExperimentDialog from '../dialogs/ExperimentDialog.vue'
 import ResistomeDialog from '../dialogs/ResistomeDialog.vue'
+import ExperimentFilter from '../filter/ExperimentFilter.vue'
 
 const BacteriaModule = namespace('bacteria')
 
 @Component({
   components: {
     ExperimentDialog,
-    ResistomeDialog,
+    ExperimentFilter,
     Pagination,
+    ResistomeDialog,
   },
 })
 export default class ExperimentTable extends Vue {
@@ -121,7 +128,7 @@ export default class ExperimentTable extends Vue {
   private get headers(): DataTableHeader[] {
     const getText = (key: string) => this.$i18n.t(`bacteria.columns.${key}`) as string
 
-    return [
+    const headers: DataTableHeader[] = [
       {
         text: getText('id'),
         value: 'identification',
@@ -150,12 +157,22 @@ export default class ExperimentTable extends Vue {
         text: getText('st'),
         value: 'st',
       },
-      {
+    ]
+
+    if (this.isCovid) {
+      headers.splice(1, 0, {
+        text: getText('specie'),
+        value: 'subSpecieName',
+      })
+    } else {
+      headers.push({
         text: getText('resistance_genes'),
         value: 'resistome',
         sortable: false,
-      },
-    ]
+      })
+    }
+
+    return headers
   }
 
   private get options() {
@@ -179,6 +196,12 @@ export default class ExperimentTable extends Vue {
 
     const newFilter = this.filter.copyWith({ sort })
     this.fetchExperiments(newFilter)
+  }
+
+  private get isCovid(): boolean {
+    const { name } = this.$route.params
+
+    return name === 'COVID'
   }
 
   private showResistome(resistome: Resistome) {
@@ -211,7 +234,20 @@ export default class ExperimentTable extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.pagination {
-  margin: 30px auto 20px;
+.experiment-table {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow: hidden;
+  padding: 0;
+
+  .v-data-table {
+    flex-grow: 1;
+    overflow-y: scroll;
+  }
+
+  .pagination {
+    margin: 30px auto 20px;
+  }
 }
 </style>

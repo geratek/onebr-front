@@ -1,5 +1,5 @@
 <template>
-  <div class="home-page pt-0">
+  <div class="home-page pt-0 px-0">
     <home-hero />
     <home-bacteria />
     <home-about />

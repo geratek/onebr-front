@@ -2,6 +2,7 @@
   "filter": {
     "search": "O que deseja buscar?",
     "resistome": "Digite o resistoma resejado",
+    "sub_specie": "Buscar por espécie",
     "start_date": "Data inicio",
     "end_date": "Data fim"
   },
@@ -13,7 +14,8 @@
     "source": "Amostra",
     "host": "Hospedeiro",
     "st": "ST",
-    "resistance_genes": "Genes de resistência"
+    "resistance_genes": "Genes de resistência",
+    "specie": "Espécie"
   },
   "resistome": {
     "aminoglycoside": "Aminoglicosídeos",
@@ -85,17 +87,32 @@
     "ctf": "CTF",
     "amp": "AMP",
     "tet": "TET",
-    "col": "COL*"
+    "col": "COL*",
+    "tob": "TOB",
+    "pit": "PIT",
+    "tig": "TIG",
+    "lzd": "LZD",
+    "azi": "AZI",
+    "lxv": "LXV",
+    "cli": "CLI",
+    "pen": "PEN",
+    "mup": "MUP",
+    "van": "VAN",
+    "efflux_pump": "Bomba de efluxo",
+    "scc_mec_element": "SCCmec element",
+    "saureus_spa_type": "SAureus spa type"
   },
   "enlarge_map": "Aumentar mapa",
   "collapse_map": "Reduzir mapa",
   "ebursts": {
     "ecbr": "https://online.phyloviz.net/main/dataset/share/cfab114ba3c93f82cf9d13c3436cbb14fc5fa29dcc5aeb3888035191d4194441ff72f5214ff3add00d6a2ce7e2915087e23a5b0ea834c52f37d6ece96f4c746a8a2eee0b82f5a609586167b8011543033faa81128b81bfeacf02140eb415",
     "kpbr": "https://online.phyloviz.net/main/dataset/share/cff41647a3c93f81cf9d13c4436cbb13fc05a29bcc5ab13e880351cbd4194410fd25f4274faff5d70c6a2ae5e1c757d3be3e5e0baf329a7e37d6ecee6f1d746a8a24ee5882f3a659586967bc0140",
-    "sebr": "https://online.phyloviz.net/main/dataset/share/cff41647a3c93f81cf9d13c4436cbb13fc05a29bcc5ab13e880351cbd4194410fa72f5224faff5d757682fe0e5c453d7be6d5e0baf349a743781ece96f4a743f8a7fee0e82a2a659586b67e9014643053ff9811b8b86"
+    "sebr": "https://online.phyloviz.net/main/dataset/share/cff41647a3c93f81cf9d13c4436cbb13fc05a29bcc5ab13e880351cbd4194410fa72f5224faff5d757682fe0e5c453d7be6d5e0baf349a743781ece96f4a743f8a7fee0e82a2a659586b67e9014643053ff9811b8b86",
+    "covid": ""
   },
   "confirm": {
     "title": "Tem certeza que deseja sair da pesquisa?",
     "message": "Se você escolher outro ponto do mapa para ver agora, o filtro da sua pesquisa será desfeito."
-  }
+  },
+  "see_more": "ver mais"
 }

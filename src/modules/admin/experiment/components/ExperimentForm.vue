@@ -51,6 +51,21 @@
                   v-model="model.specie"
                 />
               </v-col>
+              <v-col cols="12" sm="4" v-if="showSubSpecies">
+                <v-select
+                  clearable
+                  outlined
+                  rounded
+                  return-object
+                  item-text="name"
+                  item-value="id"
+                  style="max-width: 240px"
+                  hide-details="auto"
+                  :label="$t('admin.experiment.form.fields.sub_specie')"
+                  :items="subSpecies"
+                  v-model="model.sub_specie"
+                />
+              </v-col>
               <v-col cols="12" sm="4">
                 <v-select
                   clearable
@@ -171,7 +186,7 @@
                   v-model="model.st"
                 />
               </v-col>
-              <v-col cols="12" sm="5">
+              <v-col cols="12" sm="6" md="4">
                 <v-text-field
                   outlined
                   required
@@ -180,6 +195,31 @@
                   :label="$t('admin.experiment.form.fields.researcher')"
                   :rules="[required]"
                   v-model="model.researcher_name"
+                />
+              </v-col>
+              <v-col cols="12" sm="6" md="4">
+                <v-autocomplete
+                  clearable
+                  outlined
+                  rounded
+                  hide-details
+                  return-object
+                  item-text="name"
+                  item-value="id"
+                  :label="$t('admin.experiment.form.fields.scc_mec_element')"
+                  :items="sccMecElement"
+                  v-model="model.scc_mec_element"
+                />
+              </v-col>
+              <v-col cols="12" sm="6" md="4">
+                <v-autocomplete
+                  clearable
+                  outlined
+                  rounded
+                  hide-details
+                  :label="$t('admin.experiment.form.fields.saureus_spa_type')"
+                  :items="sAureusSpaType"
+                  v-model="model.saureus_spa_type"
                 />
               </v-col>
             </v-row>
@@ -501,6 +541,22 @@
               v-model="model.plamidomes"
             />
           </dialog-section>
+
+          <dialog-section :title="$t('admin.experiment.form.section.efflux_pump')">
+            <v-autocomplete
+              clearable
+              hide-details
+              multiple
+              outlined
+              return-object
+              rounded
+              item-text="name"
+              item-value="id"
+              :label="$t('admin.experiment.form.fields.efflux_pump')"
+              :items="effluxPump"
+              v-model="model.efflux_pumps"
+            />
+          </dialog-section>
         </v-form>
       </v-card-text>
 
@@ -644,6 +700,15 @@ export default class ExperimentForm extends Mixins(ValidatorMixin) {
   @AdminExperimentModule.Getter
   private readonly regions!: string[]
 
+  @AdminExperimentModule.Getter
+  private readonly effluxPump!: BacteriaFilterItem[]
+
+  @AdminExperimentModule.Getter
+  private readonly sccMecElement!: BacteriaFilterItem[]
+
+  @AdminExperimentModule.Getter
+  private readonly sAureusSpaType!: string[]
+
   @AdminExperimentModule.Mutation
   private readonly setFormModel!: (formModel: ExperimentModel|null) => Promise<void>
 
@@ -652,6 +717,9 @@ export default class ExperimentForm extends Mixins(ValidatorMixin) {
 
   @AdminExperimentModule.Action
   private readonly saveExperiment!: (formModel: ExperimentModel|null) => Promise<void>
+
+  @AdminExperimentModule.Action
+  private readonly fetchSubSpecies!: (groupId: number) => Promise<BacteriaFilterItem[]>
 
   @Watch('formModel')
   updateModel(newValue: ExperimentModel|null = null) {
@@ -669,6 +737,8 @@ export default class ExperimentForm extends Mixins(ValidatorMixin) {
 
   private confirmDialog = false
 
+  private subSpecies: BacteriaFilterItem[] = []
+
   private get isOpen(): boolean {
     return this.model !== null
   }
@@ -681,6 +751,10 @@ export default class ExperimentForm extends Mixins(ValidatorMixin) {
 
   private get isEditing(): boolean {
     return !!this.model?.id
+  }
+
+  private get showSubSpecies(): boolean {
+    return Boolean(this.model?.specie?.id && this.subSpecies.length)
   }
 
   private resistomeFields = [
@@ -707,7 +781,10 @@ export default class ExperimentForm extends Mixins(ValidatorMixin) {
     ['nal', 'cip', 'amc', 'atm'],
     ['fos', 'ami', 'gen', 'sxt'],
     ['eno', 'chl', 'cep', 'ctf'],
-    ['amp', 'tet', 'col'],
+    ['amp', 'tet', 'col', 'tob'],
+    ['pit', 'tig', 'lzd', 'azi'],
+    ['lxv', 'cli', 'pen', 'mup'],
+    ['van'],
   ]
 
   private deleteExperiment(id: number) {
@@ -724,6 +801,22 @@ export default class ExperimentForm extends Mixins(ValidatorMixin) {
       this.reset()
     } catch (err) {
       console.error(err)
+    }
+  }
+
+  @Watch('model.specie')
+  private async onChangeSpecie(specie?: BacteriaFilterItem) {
+    this.subSpecies = []
+
+    if (specie) {
+      try {
+        this.subSpecies = await this.fetchSubSpecies(specie.id)
+      } catch (_) { /** */ }
+    }
+
+    if (this.model && !this.subSpecies.some((item) => item.id === this.model?.sub_specie?.id)) {
+      // eslint-disable-next-line
+      this.model!.sub_specie = {}
     }
   }
 }

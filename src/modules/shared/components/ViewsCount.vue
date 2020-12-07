@@ -6,7 +6,7 @@
       </v-btn>
 
       <span class="subtitle-2 text-no-wrap mr-2">
-        <span ref="views">0</span> {{ $t('shared.views') }}
+        <span ref="views">{{ totalViews }}</span> {{ $t('shared.views') }}
       </span>
 
       <v-btn icon large @click="toggleExpand(false)">
@@ -18,9 +18,12 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
+import { namespace } from 'vuex-class'
 
 import GlobalIcon from '@/modules/shared/components/icons/GlobalIcon.vue'
 import Icon from '@/modules/shared/components/Icon.vue'
+
+const SharedModule = namespace('shared')
 
 @Component({
   components: {
@@ -33,6 +36,12 @@ export default class ViewsCount extends Vue {
     views: HTMLSpanElement;
   }
 
+  @SharedModule.State
+  private readonly totalViews!: number
+
+  @SharedModule.Action
+  private readonly fetchTotalViews!: () => Promise<void>
+
   private expanded = false
 
   private toggleExpand(expanded: boolean) {
@@ -40,17 +49,7 @@ export default class ViewsCount extends Vue {
   }
 
   private mounted() {
-    // TODO: remove this code when implement page view count on backend
-    const hitCounter = document.querySelector('.hitCounter') as HTMLAnchorElement|null
-
-    if (!hitCounter) return
-
-    const timerId = setInterval(() => {
-      if (!Number.isNaN(Number(hitCounter.innerText))) {
-        this.$refs.views.innerText = hitCounter.innerText
-        clearInterval(timerId)
-      }
-    }, 1000)
+    this.fetchTotalViews()
   }
 }
 </script>
@@ -58,12 +57,12 @@ export default class ViewsCount extends Vue {
 <style lang="scss" scoped>
 .views-count {
   border-radius: 30px;
-  bottom: 230px;
+  bottom: 16px;
   color: white;
   opacity: .5;
   overflow: hidden;
   position: fixed;
-  right: 50px;
+  right: 16px;
   width: 50px;
   z-index: 1;
 
@@ -75,6 +74,11 @@ export default class ViewsCount extends Vue {
   &.expanded {
     width: auto;
     opacity: 1;
+  }
+
+  @media #{map-get($display-breakpoints, 'md-and-up')} {
+    bottom: 230px;
+    right: 50px;
   }
 }
 </style>

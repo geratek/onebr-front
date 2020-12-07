@@ -46,6 +46,26 @@ class Antibiogram {
   sxt: string|null = null
 
   tet: string|null = null
+
+  tob: string|null = null
+
+  pit: string|null = null
+
+  tig: string|null = null
+
+  lzd: string|null = null
+
+  azi: string|null = null
+
+  lxv: string|null = null
+
+  cli: string|null = null
+
+  pen: string|null = null
+
+  mup: string|null = null
+
+  van: string|null = null
 }
 
 export default Antibiogram

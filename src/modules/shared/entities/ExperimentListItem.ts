@@ -16,6 +16,7 @@ class ExperimentListItem {
     public sourceNamePt: string = '-',
     public st: string = '-',
     public specieName: string = '-',
+    public subSpecieName: string = '-',
   ) { }
 
   static fromResponse(response: JSON): ExperimentListItem | ExperimentListItem[] {
@@ -46,6 +47,7 @@ class ExperimentListItem {
     if (json.host) instance.host = json.host
     if (json.date) instance.date = json.date
     if (json.specieName) instance.specieName = json.specieName
+    if (json.subSpecieName) instance.subSpecieName = json.subSpecieName
 
     return instance
   }

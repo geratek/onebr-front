@@ -44,7 +44,8 @@
       "fim_type": "fim_type",
       "clermont_typing": "Clermont Typing",
       "serovar": "Serovar",
-      "plasmidome": "Plasmidome"
+      "plasmidome": "Plasmidome",
+      "efflux_pump": "Efflux pump"
     },
     "fields": {
       "aminoglycoside": {
@@ -130,9 +131,20 @@
       "amp": "AMP",
       "tet": "TET",
       "col": "COL*",
+      "tob": "TOB",
+      "pit": "PIT",
+      "tig": "TIG",
+      "lzd": "LZD",
+      "azi": "AZI",
+      "lxv": "LXV",
+      "cli": "CLI",
+      "pen": "PEN",
+      "mup": "MUP",
+      "van": "VAN",
       "id": "ID",
       "barcode": "Barcode",
       "specie": "Specie",
+      "sub_specie": "Sub specie",
       "country": "Country",
       "city": "City",
       "region": "Region",
@@ -164,7 +176,10 @@
       "resistome": "Resistome",
       "researcher": "Researcher",
       "antigen_o": "Antigen O",
-      "antigen_h": "Antigen H"
+      "antigen_h": "Antigen H",
+      "efflux_pump": "Efflux pump",
+      "scc_mec_element": "SCCmec element",
+      "saureus_spa_type": "SAureus spa type"
     },
     "confirm_delete_title": "Warning!",
     "confirm_delete_message": "Deleting an experiment is permanent."

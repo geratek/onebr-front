@@ -27,6 +27,9 @@
       <p class="body-2 ma-0">
         {{ experiment.specie }}
       </p>
+      <p class="body-2 ma-0">
+        {{ experiment.subSpecie }}
+      </p>
 
       <dialog-section id="general">
         <v-container fluid pa-0>
@@ -145,6 +148,14 @@
         {{ experiment.st }}
       </dialog-section>
 
+      <dialog-section id="scc_mec_element" :title="$t('bacteria.experiment_dialog.scc_mec_element')">
+        {{ experiment.sccMecElement }}
+      </dialog-section>
+
+      <dialog-section id="saureus_spa_type" :title="$t('bacteria.experiment_dialog.saureus_spa_type')">
+        {{ experiment.saureusSpaType }}
+      </dialog-section>
+
       <dialog-section id="resistome" :title="$t('bacteria.experiment_dialog.resistome')">
         <v-container fluid pa-0>
           <v-row no-gutters>
@@ -224,6 +235,10 @@
       <dialog-section id="plasmidome" :title="$t('bacteria.experiment_dialog.plasmidome')">
         {{ experiment.plasmidome }}
       </dialog-section>
+
+      <dialog-section id="efflux_pump" :title="$t('bacteria.experiment_dialog.efflux_pump')">
+        {{ experiment.effluxPump }}
+      </dialog-section>
     </v-sheet>
 
     <v-sheet class="pa-5 ml-3" width="216" height="100%">
@@ -244,6 +259,12 @@
         </a>
         <a href="#st" class="subtitle-2 d-block scrollactive-item mb-2">
           {{ $t('bacteria.experiment_dialog.st') }}
+        </a>
+        <a href="#scc_mec_element" class="subtitle-2 d-block scrollactive-item mb-2">
+          {{ $t('bacteria.experiment_dialog.scc_mec_element') }}
+        </a>
+        <a href="#saureus_spa_type" class="subtitle-2 d-block scrollactive-item mb-2">
+          {{ $t('bacteria.experiment_dialog.saureus_spa_type') }}
         </a>
         <a href="#resistome" class="subtitle-2 d-block scrollactive-item mb-2">
           {{ $t('bacteria.experiment_dialog.resistome') }}
@@ -275,8 +296,11 @@
         <a href="#serovar" class="subtitle-2 d-block scrollactive-item mb-2">
           {{ $t('bacteria.experiment_dialog.serovar') }}
         </a>
-        <a href="#plasmidome" class="subtitle-2 d-block scrollactive-item mb-0">
+        <a href="#plasmidome" class="subtitle-2 d-block scrollactive-item mb-2">
           {{ $t('bacteria.experiment_dialog.plasmidome') }}
+        </a>
+        <a href="#efflux_pump" class="subtitle-2 d-block scrollactive-item mb-0">
+          {{ $t('bacteria.experiment_dialog.efflux_pump') }}
         </a>
       </scrollactive>
     </v-sheet>

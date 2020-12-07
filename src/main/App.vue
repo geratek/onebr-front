@@ -2,9 +2,9 @@
   <v-app>
     <app-bar />
 
-    <v-content>
+    <v-main>
       <router-view />
-    </v-content>
+    </v-main>
 
     <app-footer />
 
@@ -36,6 +36,16 @@ export default class App extends Vue {
 </script>
 
 <style lang="scss">
+html {
+  @media #{map-get($display-breakpoints, 'sm-and-down')} {
+    font-size: 14px;
+  }
+}
+
+body {
+  overflow-x: hidden;
+}
+
 a {
   text-decoration: none;
 
@@ -52,8 +62,11 @@ address {
 [class*="-page"] {
   background-position: center center;
   background-size: 100% 100%;
-  padding-bottom: 112px;
-  padding-top: 63px;
+  padding: 12px 20px 57px;
+
+  @media #{map-get($display-breakpoints, 'md-and-up')} {
+    padding: 63px 0 112px;
+  }
 }
 
 .bg-full {
@@ -66,6 +79,12 @@ address {
   .justify-space-evenly {
     justify-content: space-around; // fallback
     justify-content: space-evenly !important;
+  }
+
+  @media #{map-get($display-breakpoints, 'sm-and-down')} {
+    .display-2 {
+      font-size: 1.71rem !important;
+    }
   }
 }
 
@@ -82,7 +101,7 @@ address {
 .v-dialog {
   &--top {
     align-self: flex-start;
-    margin: 140px;
+    margin-top: 140px;
   }
 }
 
@@ -118,5 +137,51 @@ address {
       }
     }
   }
+}
+
+.glide {
+  &__slides {
+    padding: 0 !important;
+  }
+
+  &__bullets {
+    align-items: center;
+    display: flex;
+    height: 50px;
+    justify-content: center;
+  }
+
+  &__bullet {
+    background: var(--v-primary-base);
+    border-radius: 100%;
+    height: 8px;
+    margin: 0 4px;
+    opacity: 20%;
+    outline: none;
+    width: 8px;
+
+    &--active {
+      opacity: 100%;
+    }
+  }
+
+  [data-glide-el="controls"] {
+    button {
+      outline: none;
+      width: 52px;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+    }
+
+    button:last-child {
+      right: 0;
+    }
+  }
+}
+
+// fix for https://github.com/vuetifyjs/vuetify/issues/11553
+.v-autocomplete:not(.v-input--is-focused).v-select--chips input {
+  max-height: 25px !important;
 }
 </style>
