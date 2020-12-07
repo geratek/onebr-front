@@ -5,17 +5,17 @@
         {{ $d(publication.date, 'short') }}
       </p>
 
-      <h1 class="body-1 font-weight-medium mb-4">
+      <h1 class="body-1 font-weight-medium mb-2 mb-md-4">
         {{ publication.title }}
       </h1>
 
-      <p class="body-2 mb-0">
+      <p class="body-2 mb-5 mb-md-0">
         {{ publication.description }}
       </p>
     </div>
 
     <primary-button
-      class="ml-8"
+      class="ml-md-8"
       target="_blank"
       :href="publication.link"
     >
@@ -44,13 +44,20 @@ export default class PublicationItem extends Vue {
 
 <style lang="scss" scoped>
 .publication-item {
-  align-items: center;
   background: #FFFFFF;
   border-radius: 10px;
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  margin-bottom: 30px;
-  padding: 30px;
+  margin-bottom: 24px;
+  padding: 24px 16px;
+
+  @media #{map-get($display-breakpoints, 'md-and-up')} {
+    align-items: center;
+    flex-direction: row;
+    margin-bottom: 30px;
+    padding: 30px;
+  }
 }
 </style>

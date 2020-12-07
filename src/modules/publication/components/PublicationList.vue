@@ -6,10 +6,12 @@
         rounded
         clearable
         hide-details
+        background-color="white"
         class="mb-4"
-        style="width: 250px; background: white"
+        style="width: 240px;"
         :label="$t('publication.content_type')"
         :items="types"
+        :dense="$vuetify.breakpoint.smAndDown"
         v-model="contentType"
         @change="changeContentType"
       />
