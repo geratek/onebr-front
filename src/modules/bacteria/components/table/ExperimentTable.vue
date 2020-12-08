@@ -106,6 +106,9 @@ export default class ExperimentTable extends Vue {
   private readonly fetchExperiments!: (filter: BacteriaFilter) => Promise<void>
 
   @BacteriaModule.Action
+  private readonly loadMoreExperiments!: (filter: BacteriaFilter) => Promise<void>
+
+  @BacteriaModule.Action
   private readonly fetchExperimentById!: (id: number) => Promise<void>
 
   @Watch('selected')
@@ -217,6 +220,13 @@ export default class ExperimentTable extends Vue {
       await this.fetchExperimentById(id)
       this.experimentDialog = true
 
+      if (this.$vuetify.breakpoint.smAndDown) {
+        setTimeout(() => {
+          window.print()
+          setTimeout(() => { this.experimentDialog = false }, 1000)
+        }, 750)
+      }
+
       this.$ga.page(`${this.$router.currentRoute.path}/view`)
     } catch (err) {
       console.error(err)
@@ -230,7 +240,7 @@ export default class ExperimentTable extends Vue {
       this.loading = true
       const newFilter = this.filter.copyWith({ page: nextPage })
 
-      this.fetchExperiments(newFilter).finally(() => {
+      this.loadMoreExperiments(newFilter).finally(() => {
         this.loading = false
       })
     }

@@ -14,7 +14,7 @@ const mutations: MutationTree<BacteriaState> = {
     state.coordinates = coordinates
   },
   setExperiments(state, experiments: ExperimentListItem[]) {
-    state.experiments = [...state.experiments, ...experiments]
+    state.experiments = experiments
   },
   setResistome(state, resistome: Resistome | null) {
     state.resistome = resistome

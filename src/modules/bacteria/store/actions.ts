@@ -27,6 +27,18 @@ const actions: ActionTree<BacteriaState, unknown> = {
       throw err
     }
   },
+  async loadMoreExperiments({ commit, state }, filter: BacteriaFilter): Promise<void> {
+    commit('setFilter', filter)
+
+    try {
+      const { data } = await BacteriaService.getExperimentsPaginated(filter)
+      commit('setExperiments', [...state.experiments, ...data.content])
+      commit('setPageable', data.pageable)
+    } catch (err) {
+      console.error(err)
+      throw err
+    }
+  },
   async fetchExperimentById({ commit }, id: number): Promise<void> {
     try {
       const { data } = await BacteriaService.getExperimentById(id)
