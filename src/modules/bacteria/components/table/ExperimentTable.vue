@@ -226,7 +226,7 @@ export default class ExperimentTable extends Vue {
   private onIntersect() {
     const nextPage = this.filter.page + 1
 
-    if (!this.loading && nextPage <= this.pageable.totalPages) {
+    if (!this.loading && this.pageable && (nextPage <= this.pageable.totalPages)) {
       this.loading = true
       const newFilter = this.filter.copyWith({ page: nextPage })
 
