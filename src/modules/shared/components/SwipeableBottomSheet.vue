@@ -7,8 +7,10 @@
       :data-state="isMove ? 'move' : state"
       :style="{ top: `${isMove ? y : calcY()}px` }"
     >
-      <div class="pan-area" ref="pan">
-        <div class="bar" ref="bar" />
+      <div class="pan-area" ref="pan" @click="toggleHalf()">
+        <p class="body-2 ma-0 text-center">
+          Visualizar tabela
+        </p>
       </div>
 
       <div class="contents">
@@ -94,7 +96,7 @@ export default {
     calcY() {
       switch (this.state) {
         case 'close':
-          return this.rect.height - 34
+          return this.rect.height - 37
         case 'open':
           return this.$vuetify.application.top
         case 'half':
@@ -105,6 +107,19 @@ export default {
     },
     setState(state) {
       this.state = state
+    },
+    toggleHalf() {
+      switch (this.state) {
+        case 'close':
+          this.state = 'half'
+          break
+
+        case 'half':
+          this.state = 'close'
+          break
+
+        default:
+      }
     },
   },
 }
@@ -152,22 +167,14 @@ export default {
   }
 }
 
-.bar {
-  background-color: #E4E4E4;
-  border-radius: 14px;
-  cursor: pointer;
-  height: 4px;
-  margin: 0 auto;
-  width: 70px;
-}
-
 .pan-area {
-  padding: 14px 0 13px;
+  padding: 10px;
 
-  .bar {
+  p {
     &:hover {
       cursor: grab;
     }
+
     &:active {
       cursor: grabbing;
     }
