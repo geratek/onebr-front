@@ -41,13 +41,14 @@
         </span>
       </template>
 
-      <template #footer>
-        <pagination
-          class="pagination"
-          v-if="pageable"
-          :value="filter.page"
-          :length="pageable.totalPages"
-          @input="pageChange"
+      <template #body.append>
+        <p
+          v-intersect="{
+            handler: onIntersect,
+            options: {
+              threshold: [0, 0.5, 1.0]
+            }
+          }"
         />
       </template>
     </v-data-table>
@@ -122,6 +123,8 @@ export default class ExperimentTable extends Vue {
   private resistomeDialog = false
 
   private experimentDialog = false
+
+  private loading = false
 
   private selected: ExperimentListItem[] = []
 
@@ -220,11 +223,17 @@ export default class ExperimentTable extends Vue {
     }
   }
 
-  private pageChange(page: number) {
-    if (this.filter.page === page) return
+  private onIntersect() {
+    const nextPage = this.filter.page + 1
 
-    const newFilter = this.filter.copyWith({ page })
-    this.fetchExperiments(newFilter)
+    if (!this.loading && nextPage <= this.pageable.totalPages) {
+      this.loading = true
+      const newFilter = this.filter.copyWith({ page: nextPage })
+
+      this.fetchExperiments(newFilter).finally(() => {
+        this.loading = false
+      })
+    }
   }
 
   private clickRow(_: unknown, { select, isSelected }: { select: Function; isSelected: boolean }) {
@@ -248,6 +257,10 @@ export default class ExperimentTable extends Vue {
 
   .pagination {
     margin: 30px auto 20px;
+  }
+
+  &::v-deep table {
+    min-width: 1100px;
   }
 }
 </style>
