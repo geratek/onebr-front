@@ -1,6 +1,9 @@
 <template>
-  <figure class="team-member text-center pt-3 pb-6">
-    <v-avatar width="200" height="190">
+  <figure class="team-member text-center">
+    <v-avatar
+      :width="isMobile ? 155 : 200"
+      :height="isMobile ? 149 : 190"
+    >
       <img
         :src="profileImage"
         :alt="member.name"
@@ -32,22 +35,33 @@ export default class TeamMember extends Vue {
   private get profileImage(): string {
     return this.member.image?.src ?? ''
   }
+
+  private get isMobile(): boolean {
+    return this.$vuetify.breakpoint.smAndDown
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 .team-member {
   width: 260px;
+  padding: 12px 0 24px;
+
+  &:only-child {
+    padding-bottom: 75px;
+  }
+
+  @media #{map-get($display-breakpoints, 'md-and-up')} {
+    &:not(:last-child) {
+      margin-right: 42px;
+    }
+  }
 
   &__name {
     font-size: 18px;
     font-weight: 600;
     line-height: 150%;
     margin: 17px 0 6px;
-  }
-
-  &:not(:last-child) {
-    margin-right: 42px;
   }
 }
 </style>
