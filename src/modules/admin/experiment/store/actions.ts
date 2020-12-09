@@ -123,7 +123,7 @@ const actions: ActionTree<ExperimentState, unknown> = {
     try {
       await action(formModel)
 
-      Vue.toasted.success(i18n.t(`admin.publication.messages.${message}`) as string, { icon: 'check' })
+      Vue.toasted.success(i18n.t(`admin.experiment.messages.${message}`) as string, { icon: 'check' })
 
       commit('setFormModel', null)
       dispatch('fetchExperiments', state.filter)

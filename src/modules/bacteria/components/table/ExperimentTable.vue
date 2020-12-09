@@ -21,6 +21,12 @@
         </a>
       </template>
 
+      <template #item.subSpecieName="{ item }">
+        <span class="font-italic">
+          {{ item.subSpecieName }}
+        </span>
+      </template>
+
       <template #item.host="{ item }">
         <span :class="{'font-italic': item.host !== 'NA' }">
           {{ item.host }}

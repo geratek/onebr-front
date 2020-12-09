@@ -179,7 +179,7 @@
       "antigen_h": "Antigen H",
       "efflux_pump": "Bomba de efluxo",
       "scc_mec_element": "SCCmec element",
-      "saureus_spa_type": "SAureus spa type"
+      "saureus_spa_type": "S. aureus spa type"
     },
     "confirm_delete_title": "Atenção!",
     "confirm_delete_message": "A exclusão de um experimento é permanente."
