@@ -147,7 +147,7 @@ export default {
   .card {
     background: white;
     box-shadow: 0 -1px 0 0 rgba(0, 0, 0, .15);
-    height: 100vh;
+    height: 100%;
     left: 0;
     position: fixed;
     width: 100%;

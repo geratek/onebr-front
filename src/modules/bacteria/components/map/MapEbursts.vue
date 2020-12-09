@@ -76,7 +76,7 @@ export default class MapEbursts extends Vue {
 .map__ebursts {
   background-color: white;
   background-size: contain;
-  bottom: 24px;
+  bottom: 63px;
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
   height: 46px;
   left: 24px;
