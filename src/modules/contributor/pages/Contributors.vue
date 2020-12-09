@@ -62,17 +62,27 @@ export default class Contributors extends Mixins(ViewDataMixin) {
 
 <style lang="scss" scoped>
 .contributors-page {
-  background-image: url(../../../assets/contributors_bg.png);
-  background-position: center top;
-  background-size: 100% 1386px;
+  @media #{map-get($display-breakpoints, 'md-and-up')} {
+    background-image: url(../../../assets/contributors_bg.png);
+    background-position: center top;
+    background-size: 100% 1386px;
+  }
 
   .mascot {
-    margin: 48px auto 90px;
+    margin: 32px auto 40px;
+
+    @media #{map-get($display-breakpoints, 'md-and-up')} {
+      margin: 48px auto 90px;
+    }
   }
 
   .divider {
-    margin: 70px auto 5px;
+    margin: 40px auto 5px;
     width: 80%;
+
+    @media #{map-get($display-breakpoints, 'md-and-up')} {
+      margin-top: 70px;
+    }
   }
 }
 </style>

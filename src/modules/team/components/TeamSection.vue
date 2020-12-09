@@ -33,7 +33,9 @@ export default class TeamSection extends Vue {
   flex-direction: column;
 
   &.single {
-    margin-right: 92px;
+    @media #{map-get($display-breakpoints, 'md-and-up')} {
+      margin-right: 92px;
+    }
 
     .team-section__title {
       padding-left: 0;
@@ -43,16 +45,25 @@ export default class TeamSection extends Vue {
   }
 
   &__title {
-    align-self: flex-start;
-    font-size: 30px;
+    font-size: 18px;
     font-weight: 400;
     margin-bottom: 14px;
-    padding-left: 20px;
+
+    @media #{map-get($display-breakpoints, 'md-and-up')} {
+      align-self: flex-start;
+      font-size: 30px;
+      padding-left: 20px;
+    }
   }
 
   &__content {
     display: flex;
     position: relative;
+    flex-direction: column;
+
+    @media #{map-get($display-breakpoints, 'md-and-up')} {
+      flex-direction: row;
+    }
   }
 }
 </style>

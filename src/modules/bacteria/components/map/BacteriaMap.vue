@@ -31,6 +31,8 @@
       </v-marker-cluster>
     </l-map>
 
+    <map-microreact />
+
     <map-ebursts />
 
     <map-control
@@ -64,6 +66,7 @@ import ConfirmDialog from '@/modules/shared/components/ConfirmDialog.vue'
 import BacteriaMenu from './BacteriaMenu.vue'
 import MapControl from './MapControl.vue'
 import MapEbursts from './MapEbursts.vue'
+import MapMicroreact from './MapMicroreact.vue'
 
 const BacteriaModule = namespace('bacteria')
 
@@ -77,6 +80,7 @@ const BacteriaModule = namespace('bacteria')
     MapControl,
     VMarkerCluster,
     MapEbursts,
+    MapMicroreact,
   },
 })
 export default class BacteriaMap extends Vue {

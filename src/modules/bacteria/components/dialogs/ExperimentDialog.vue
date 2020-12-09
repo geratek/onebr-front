@@ -2,6 +2,7 @@
   <v-dialog
     content-class="experiment-dialog"
     :value="value"
+    :hide-overlay="$vuetify.breakpoint.smAndDown"
     v-if="value"
     @input="$emit('input', $event)"
     @click:outside="close"
@@ -361,6 +362,10 @@ a {
   display: flex;
   overflow: hidden;
   width: auto;
+
+  @media #{map-get($display-breakpoints, 'sm-and-down')} {
+    visibility: hidden !important;
+  }
 
   &__content {
     &.pa-10 {

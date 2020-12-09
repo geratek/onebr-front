@@ -88,7 +88,7 @@ export default class MapControl extends Vue {
 
 <style lang="scss" scoped>
 .map-control {
-  bottom: 24px;
+  bottom: 63px;
   position: absolute;
   width: 30px;
   right: 24px;

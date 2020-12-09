@@ -7,7 +7,7 @@
 	"see_more": "Learn more",
 	"actions": {
 		"submit": "submit",
-		"cancel": "cancelar",
+		"cancel": "cancel",
 		"proceed": "proceed",
 		"edit": "edit",
 		"print": "print"
@@ -49,7 +49,7 @@
 	"copyright": "Copyright &#169; 2020 One BR  |  Developed by",
 	"views": "views",
 	"clear": "Clear",
-	"back": "Voltar",
+	"back": "Back",
 	"yes": "Yes",
 	"no": "No",
 	"get_out": "Get out",
@@ -64,6 +64,6 @@
 	"messages": {
 		"profile_updated": "Profile updated"
 	},
-	"start": "Inicio",
-	"end": "fim"
+	"start": "Start",
+	"end": "end"
 }

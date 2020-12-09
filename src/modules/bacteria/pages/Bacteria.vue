@@ -95,5 +95,9 @@ export default class Bacteria extends Vue {
   @media #{map-get($display-breakpoints, 'md-and-up')} {
     padding: 0;
   }
+
+  @media print {
+    visibility: hidden;
+  }
 }
 </style>

@@ -30,7 +30,7 @@ class BacteriaFilter implements BacteriaFilterInterface {
 
   page = 1
 
-  size = 10
+  size = 15
 
   constructor(filter?: BacteriaFilterInterface) {
     Object.assign(this, filter)

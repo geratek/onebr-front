@@ -72,6 +72,11 @@ export default class Menu extends Vue {
         to: { name: 'publications' },
       },
       {
+        title: this.$t('shared.menu.5.title'),
+        subtitle: this.$t('shared.menu.5.text'),
+        to: { name: 'perspective' },
+      },
+      {
         title: this.$t('shared.menu.4.title'),
         subtitle: this.$t('shared.menu.4.text'),
         to: { name: 'contact' },
