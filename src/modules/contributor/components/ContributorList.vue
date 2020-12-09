@@ -4,7 +4,7 @@
       v-for="contributor in contributors"
       :key="contributor.order"
       color="secondary"
-      class="primary--text mr-5 mb-5 px-5"
+      class="primary--text mr-md-5 mb-5 px-md-5"
     >
       {{ contributor.name }} - {{ contributor.description }}
     </v-chip>
@@ -30,7 +30,22 @@ export default class ContributorList extends Vue {
 .contributor-list {
   margin: 0 auto;
   max-width: 1215px;
-  padding-left: 20px;
   text-align: center;
+
+  @media #{map-get($display-breakpoints, 'md-and-up')} {
+    padding-left: 20px;
+  }
+
+  @media #{map-get($display-breakpoints, 'sm-and-down')} {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .v-chip {
+      font-size: 11px;
+      white-space: normal;
+      min-height: 32px;
+    }
+  }
 }
 </style>

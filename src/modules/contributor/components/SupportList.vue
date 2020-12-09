@@ -31,13 +31,23 @@ export default class SupportList extends Vue {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding-left: 40px;
+  flex-direction: column;
+  align-items: center;
+
+  @media #{map-get($display-breakpoints, 'md-and-up')} {
+    padding-left: 40px;
+    flex-direction: row;
+  }
 
   &__logo {
-    margin-top: 80px;
-    margin-right: 40px;
+    margin-top: 40px;
     max-height: 100px;
     max-width: 148px;
+
+    @media #{map-get($display-breakpoints, 'md-and-up')} {
+      margin-right: 40px;
+      margin-top: 80px;
+    }
   }
 }
 </style>
