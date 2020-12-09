@@ -186,7 +186,7 @@
   },
   "messages": {
     "added": "Experiment added",
-    "updated": "Experiment deleted",
-    "deleted": "Experiment updated"
+    "updated": "Experiment updated",
+    "deleted": "Experiment deleted"
   }
 }
