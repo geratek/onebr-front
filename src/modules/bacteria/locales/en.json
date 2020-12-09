@@ -110,6 +110,12 @@
     "sebr": "https://online.phyloviz.net/main/dataset/share/cff41647a3c93f81cf9d13c4436cbb13fc05a29bcc5ab13e880351cbd4194410fa72f5224faff5d757682fe0e5c453d7be6d5e0baf349a743781ece96f4a743f8a7fee0e82a2a659586b67e9014643053ff9811b8b86",
     "covid": ""
   },
+  "microreact": {
+    "ecbr": "https://microreact.org/project/noM6Wi46mnpdYSzENnWmKX",
+    "kpbr": "",
+    "sebr": "",
+    "covid": ""
+  },
   "confirm": {
     "title": "Are you sure you want to exit the search?",
     "message": "If you choose another point on the map to see it now, your search filter will be undone."

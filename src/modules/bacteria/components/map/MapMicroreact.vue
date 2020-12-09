@@ -1,9 +1,9 @@
 <template>
-  <div :class="['map__ebursts', currentBacteria]">
+  <div :class="['map__microreact', currentBacteria]">
     <a
       target="_blank"
       @click="openDialog"
-      :href="$t(`bacteria.ebursts.${currentBacteria}`)"
+      :href="$t(`bacteria.microreact.${currentBacteria}`)"
     />
 
     <v-dialog v-model="dialog">
@@ -17,12 +17,12 @@
             />
           </v-btn>
 
-          <v-img contain height="170" :src="eburstsImg" />
+          <v-img contain height="170" :src="microreactImg" />
         </v-card-text>
         <v-card-actions class="pb-8 justify-center">
           <primary-button
             target="_blank"
-            :href="$t(`bacteria.ebursts.${currentBacteria}`)"
+            :href="$t(`bacteria.microreact.${currentBacteria}`)"
           >
             {{ $t('bacteria.see_more') }}
           </primary-button>
@@ -44,7 +44,7 @@ import PrimaryButton from '@/modules/shared/components/PrimaryButton.vue'
     Icon,
   },
 })
-export default class MapEbursts extends Vue {
+export default class Mapmicroreact extends Vue {
   private dialog = false
 
   private get currentBacteria(): string {
@@ -61,10 +61,10 @@ export default class MapEbursts extends Vue {
     }
   }
 
-  private get eburstsImg(): string {
+  private get microreactImg(): string {
     try {
       // eslint-disable-next-line
-      return require(`@/assets/ebursts/${this.currentBacteria}.png`)
+      return require(`@/assets/microreact/${this.currentBacteria}.jpeg`)
     } catch (_) {
       return ''
     }
@@ -73,10 +73,11 @@ export default class MapEbursts extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.map__ebursts {
+.map__microreact {
   background-color: white;
+  background-position: center;
   background-size: contain;
-  bottom: 63px;
+  bottom: 119px;
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
   height: 46px;
   left: 24px;
@@ -85,7 +86,7 @@ export default class MapEbursts extends Vue {
   z-index: 1000;
 
   @media #{map-get($display-breakpoints, 'md-and-up')} {
-    bottom: 30px;
+    bottom: 200px;
     box-shadow: none;
     height: 150px;
     left: auto;
@@ -94,15 +95,15 @@ export default class MapEbursts extends Vue {
   }
 
   &.ecbr {
-    background-image: url(../../../../assets/ebursts/ecbr.png);
+    background-image: url(../../../../assets/microreact/ecbr.jpeg);
   }
 
   &.kpbr {
-    background-image: url(../../../../assets/ebursts/kpbr.png);
+    display: none;
   }
 
   &.sebr {
-    background-image: url(../../../../assets/ebursts/sebr.png);
+    display: none;
   }
 
   &.covid {
