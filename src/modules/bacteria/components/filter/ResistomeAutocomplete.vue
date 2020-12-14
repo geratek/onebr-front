@@ -1,6 +1,5 @@
 <template>
   <v-autocomplete
-    cache-items
     chips
     clearable
     eager
@@ -12,6 +11,7 @@
     small-chips
     item-text="name"
     item-value="id"
+    ref="autocomplete"
     :value="value"
     :items="resistomes"
     :loading="loading"
@@ -78,6 +78,10 @@ import BacteriaIcon from '@/modules/shared/components/icons/BacteriaIcon.vue'
   },
 })
 export default class ResistomeAutocomplete extends Vue {
+  $refs!: {
+    autocomplete: any;
+  }
+
   @Prop({ default: () => [], type: Array })
   private readonly value!: unknown[]
 
@@ -103,7 +107,10 @@ export default class ResistomeAutocomplete extends Vue {
   private readonly debouncedGetResistomes = debounce(this.getResistomes, 750);
 
   private async getResistomes(search: string) {
-    if (!search) return
+    if (!search) {
+      this.resistomes = []
+      return
+    }
 
     this.loading = true
     try {
@@ -135,6 +142,25 @@ export default class ResistomeAutocomplete extends Vue {
     copyValue.splice(index, deleteCount)
 
     this.$emit('input', copyValue)
+  }
+
+  handleTouchOutside(event: Event) {
+    const target = event.target as Element
+    const { autocomplete } = this.$refs
+
+    try {
+      if (autocomplete.isFocused && !target.closest('.v-autocomplete__content')) {
+        autocomplete.isFocused = false
+      }
+    } catch (_) { /** */ }
+  }
+
+  mounted() {
+    document.body.addEventListener('touchmove', this.handleTouchOutside)
+  }
+
+  destroyed() {
+    document.body.removeEventListener('touchmove', this.handleTouchOutside)
   }
 }
 </script>

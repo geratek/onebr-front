@@ -1,7 +1,6 @@
 <template>
   <v-autocomplete
     chips
-    clearable
     eager
     hide-details
     hide-no-data
@@ -11,6 +10,7 @@
     small-chips
     item-text="name"
     item-value="id"
+    ref="autocomplete"
     :value="value"
     :items="subSpecies"
     :loading="loading"
@@ -72,6 +72,10 @@ import Icon from '@/modules/shared/components/Icon.vue'
   },
 })
 export default class SubSpecieAutocomplete extends Vue {
+  $refs!: {
+    autocomplete: any;
+  }
+
   @Prop({ default: () => [], type: Array })
   private readonly value!: unknown[]
 
@@ -114,8 +118,24 @@ export default class SubSpecieAutocomplete extends Vue {
     this.$emit('input', copyValue)
   }
 
+  handleTouchOutside(event: Event) {
+    const target = event.target as Element
+    const { autocomplete } = this.$refs
+
+    try {
+      if (autocomplete.isFocused && !target.closest('.v-autocomplete__content')) {
+        autocomplete.isFocused = false
+      }
+    } catch (_) { /** */ }
+  }
+
   mounted() {
     this.getsubSpecies()
+    document.body.addEventListener('touchmove', this.handleTouchOutside)
+  }
+
+  destroyed() {
+    document.body.removeEventListener('touchmove', this.handleTouchOutside)
   }
 }
 </script>
