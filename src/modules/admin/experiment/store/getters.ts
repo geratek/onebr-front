@@ -74,7 +74,7 @@ const getters: GetterTree<ExperimentState, unknown> = {
     return state.sAureusSpaType
   },
   kLocus() {
-    return createOptions(100, 'K')
+    return createOptions(1250, 'K')
   },
   wzi() {
     return createOptions(1500, 'wzi_')
