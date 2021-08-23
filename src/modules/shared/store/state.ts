@@ -31,6 +31,13 @@ const state: SharedState = {
       type: 'SE_BR',
     }),
     Bacteria.fromJson({
+      image: 'bacteria/pabr.png',
+      name: 'PaBr',
+      origin: 'Brazilian Database',
+      scientificName: 'Pseudomonas aeruginosa',
+      type: 'PA_BR',
+    }),
+    Bacteria.fromJson({
       image: 'bacteria/covid.png',
       name: 'COVID',
       origin: 'Brazilian Database',
