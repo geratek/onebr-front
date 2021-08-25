@@ -20,7 +20,11 @@
         </span>
       </template>
       <template #item="{ item }">
-        <component class="mr-2" :is="`${item.name}Icon`" />
+        <component
+          class="mr-2"
+          style="min-width: 32px;"
+          :is="`${item.name}Icon`"
+        />
         <span class="subtitle-2 font-italic">
           {{ item.scientificName }}
         </span>
@@ -86,10 +90,14 @@ export default class BacteriaMenu extends Vue {
     box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.3);
   }
 
+  ::v-deep svg {
+    min-width: 32px;
+  }
+
   @media #{map-get($display-breakpoints, 'md-and-up')} {
     left: 50px;
     right: auto;
-    width: 300px;
+    width: 310px;
 
     .v-input {
       box-shadow: none;
