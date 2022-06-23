@@ -60,6 +60,8 @@ export default class TeamSection extends Vue {
     display: flex;
     position: relative;
     flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
 
     @media #{map-get($display-breakpoints, 'md-and-up')} {
       flex-direction: row;
