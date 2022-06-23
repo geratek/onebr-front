@@ -20,7 +20,11 @@
         </span>
       </template>
       <template #item="{ item }">
-        <component class="mr-2" :is="`${item.name}Icon`" />
+        <component
+          class="mr-2"
+          style="min-width: 32px;"
+          :is="`${item.name}Icon`"
+        />
         <span class="subtitle-2 font-italic">
           {{ item.scientificName }}
         </span>
@@ -38,6 +42,7 @@ import Bacteria from '@/modules/shared/entities/Bacteria'
 import EcBrIcon from '@/modules/shared/components/icons/EcBrIcon.vue'
 import KpBrIcon from '@/modules/shared/components/icons/KpBrIcon.vue'
 import SeBrIcon from '@/modules/shared/components/icons/SeBrIcon.vue'
+import PaBrIcon from '@/modules/shared/components/icons/PaBrIcon.vue'
 import COVIDIcon from '@/modules/shared/components/icons/COVIDIcon.vue'
 
 const SharedModule = namespace('shared')
@@ -47,6 +52,7 @@ const SharedModule = namespace('shared')
     EcBrIcon,
     KpBrIcon,
     SeBrIcon,
+    PaBrIcon,
     COVIDIcon,
   },
 })
@@ -84,13 +90,21 @@ export default class BacteriaMenu extends Vue {
     box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.3);
   }
 
+  ::v-deep svg {
+    min-width: 32px;
+  }
+
   @media #{map-get($display-breakpoints, 'md-and-up')} {
     left: 50px;
     right: auto;
-    width: 290px;
+    width: 310px;
 
     .v-input {
       box-shadow: none;
+    }
+
+    ::v-deep .v-icon {
+      margin-top: 3px !important;
     }
   }
 }

@@ -72,15 +72,18 @@ export default class HomeBacteria extends Vue {
 
   private get options(): unknown {
     return {
-      perView: 4,
+      perView: 5,
       rewind: false,
       bound: true,
       breakpoints: {
         600: {
           perView: 1,
         },
-        960: {
+        724: {
           perView: 2,
+        },
+        960: {
+          perView: 3,
         },
       },
     }
@@ -93,7 +96,7 @@ export default class HomeBacteria extends Vue {
   padding: 51px 0 0;
 
   @media #{map-get($display-breakpoints, 'lg-and-up')} {
-    padding: 84px 96px 0;
+    padding: 84px 0 0;
   }
 }
 </style>

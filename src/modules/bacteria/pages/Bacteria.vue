@@ -50,6 +50,7 @@ export default class Bacteria extends Vue {
       KpBr: 'KP_BR',
       SeBr: 'SE_BR',
       EcBr: 'EC_BR',
+      PaBr: 'PA_BR',
       COVID: 'CV_19',
     }
     const { name } = this.$route.params

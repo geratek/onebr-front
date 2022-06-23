@@ -105,6 +105,10 @@ export default class MapEbursts extends Vue {
     background-image: url(../../../../assets/ebursts/sebr.png);
   }
 
+  &.pabr {
+    display: none;
+  }
+
   &.covid {
     display: none;
   }

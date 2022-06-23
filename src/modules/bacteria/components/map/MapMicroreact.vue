@@ -106,6 +106,10 @@ export default class Mapmicroreact extends Vue {
     display: none;
   }
 
+  &.pabr {
+    display: none;
+  }
+
   &.covid {
     display: none;
   }
