@@ -32,7 +32,7 @@
         </figure>
       </vue-glide-slide>
 
-      <template slot="control" v-if="$vuetify.breakpoint.smAndDown">
+      <template slot="control">
         <button data-glide-dir="<">
           <Icon name="chevron_left" />
         </button>

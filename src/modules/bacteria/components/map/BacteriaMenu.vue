@@ -44,6 +44,7 @@ import KpBrIcon from '@/modules/shared/components/icons/KpBrIcon.vue'
 import SeBrIcon from '@/modules/shared/components/icons/SeBrIcon.vue'
 import PaBrIcon from '@/modules/shared/components/icons/PaBrIcon.vue'
 import COVIDIcon from '@/modules/shared/components/icons/COVIDIcon.vue'
+import SaBrIcon from '@/modules/shared/components/icons/SaBrIcon.vue'
 
 const SharedModule = namespace('shared')
 
@@ -54,6 +55,7 @@ const SharedModule = namespace('shared')
     SeBrIcon,
     PaBrIcon,
     COVIDIcon,
+    SaBrIcon,
   },
 })
 export default class BacteriaMenu extends Vue {

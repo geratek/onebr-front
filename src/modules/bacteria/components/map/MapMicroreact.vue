@@ -114,6 +114,10 @@ export default class Mapmicroreact extends Vue {
     display: none;
   }
 
+  &.sabr {
+    display: none;
+  }
+
   a {
     width: 100%;
     height: 100%;
