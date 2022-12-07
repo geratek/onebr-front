@@ -1,5 +1,5 @@
 # estágio de compilação
-FROM node:lts-alpine as build-stage
+FROM node:10-alpine as build-stage
 WORKDIR /app
 RUN apk --no-cache --virtual build-dependencies add python
 COPY package*.json ./
