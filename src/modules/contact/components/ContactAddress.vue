@@ -8,7 +8,7 @@
         {{ $t('shared.footer.address.line.1') }}
       </strong>
       {{ $t('shared.footer.address.line.2') }} <br />
-      {{ $t('shared.footer.address.line.3') }} <br />
+      {{ $t('shared.footer.address.line.3') }} <br /><br />
       <strong>Instagram One Health BR</strong> - Aqui divulgamos as publicações produzidas pelo laboratório de forma intuitiva e divertida, criamos uma ponte entre a bacteriologia e o dia-a-dia, e muito mais! <br />
       <a
         class="grey--text text--darken-1"
