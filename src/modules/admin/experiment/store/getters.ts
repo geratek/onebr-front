@@ -83,7 +83,7 @@ const getters: GetterTree<ExperimentState, unknown> = {
     return createOptions(1500, 'wzc_')
   },
   fimType() {
-    return createOptions(500, 'fimH')
+    return createOptions(500, 'fimH').concat(['fimH2184'])
   },
 }
 
