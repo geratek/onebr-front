@@ -16,4 +16,10 @@ export default {
   mastering(state: TeamState): TeamMember[] {
     return filter(state.members, ['title', TeamMemberTitle.mastering])
   },
+  scientificInitiation(state: TeamState): TeamMember[] {
+    return filter(state.members, ['title', TeamMemberTitle.scientificInitiation])
+  },
+  alumni(state: TeamState): TeamMember[] {
+    return filter(state.members, ['title', TeamMemberTitle.alumni])
+  },
 }

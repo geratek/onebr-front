@@ -3,7 +3,7 @@
     <h2 class="team-section__title">
       {{ title }}
     </h2>
-    <div class="team-section__content">
+    <div class="team-section__content" :class="{showborder: showborder}">
       <template v-for="member in members">
         <slot v-bind="member" />
       </template>
@@ -23,6 +23,9 @@ export default class TeamSection extends Vue {
 
   @Prop({ required: true })
   private readonly members!: TeamMember[];
+
+  @Prop({ required: false })
+  private readonly showborder!: boolean;
 }
 </script>
 
@@ -62,6 +65,12 @@ export default class TeamSection extends Vue {
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
+
+    &.showborder {
+      border-right-width: 1px;
+      border-right-style: dashed;
+      border-right-color: darkgray;
+    }
 
     @media #{map-get($display-breakpoints, 'md-and-up')} {
       flex-direction: row;

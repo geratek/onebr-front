@@ -6,7 +6,9 @@ export const enum TeamMemberTitle {
   instructor = 'INSTRUCTOR',
   postDocStudent = 'POST_DOC_STUDENT',
   docStudent = 'DOC_STUDENT',
-  mastering = 'MASTERING'
+  mastering = 'MASTERING',
+  scientificInitiation = 'SCIENTIFIC_INITIATION',
+  alumni = 'ALUMNI'
 }
 
 class TeamMember {
