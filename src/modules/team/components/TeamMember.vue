@@ -16,7 +16,7 @@
         </a>
       </h1>
       <p class="body-2 ma-0" v-if="member.title === 'INSTRUCTOR'">
-        {{ $t('team.instructor_description') }}
+        {{ member.description }}
       </p>
     </figcaption>
   </figure>
