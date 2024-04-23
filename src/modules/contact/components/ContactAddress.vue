@@ -8,7 +8,14 @@
         {{ $t('shared.footer.address.line.1') }}
       </strong>
       {{ $t('shared.footer.address.line.2') }} <br />
-      {{ $t('shared.footer.address.line.3') }}
+      {{ $t('shared.footer.address.line.3') }} <br />
+      <strong>Instagram One Health BR</strong> - Aqui divulgamos as publicações produzidas pelo laboratório de forma intuitiva e divertida, criamos uma ponte entre a bacteriologia e o dia-a-dia, e muito mais! <br />
+      <a
+        class="grey--text text--darken-1"
+        href="https://www.instagram.com/onehealthbr/"
+        style="text-decoration: underline;"
+        target="_blank"
+      >Clica aqui</a> para nos seguir!
     </address>
     <v-img
       src="@/assets/contact_attendant.png"
