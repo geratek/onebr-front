@@ -109,14 +109,18 @@
     "kpbr": "https://online.phyloviz.net/main/dataset/share/cff41647a3c93f81cf9d13c4436cbb13fc05a29bcc5ab13e880351cbd4194410fd25f4274faff5d70c6a2ae5e1c757d3be3e5e0baf329a7e37d6ecee6f1d746a8a24ee5882f3a659586967bc0140",
     "sebr": "https://online.phyloviz.net/main/dataset/share/cff41647a3c93f81cf9d13c4436cbb13fc05a29bcc5ab13e880351cbd4194410fa72f5224faff5d757682fe0e5c453d7be6d5e0baf349a743781ece96f4a743f8a7fee0e82a2a659586b67e9014643053ff9811b8b86",
     "pabr": "",
-    "covid": ""
+    "covid": "",
+    "sabr": "",
+    "efbr": ""
   },
   "microreact": {
     "ecbr": "https://microreact.org/project/5AxAJPdcG4Jy8jZanqdPAe",
     "kpbr": "",
     "sebr": "",
     "pabr": "",
-    "covid": ""
+    "covid": "",
+    "sabr": "",
+    "efbr": ""
   },
   "confirm": {
     "title": "Are you sure you want to exit the search?",

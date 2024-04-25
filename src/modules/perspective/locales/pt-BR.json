@@ -6,7 +6,7 @@
   "items": {
     "1": "Desenvolver um modelo para predizer a Concentração Inibitória Mínima (CIM) baseado em dados genômicos públicos e técnicas de maching learning como random forest, redes neurais, entre outras. Este modelo pode ser implementado baseado em uma webapp no site OneBR em modelo de protótipo para atingir o público.",
     "2": "Desenvolver um pipeline dentro da página OneBR para busca de genes (Resistência, virulência,metais pesados), usando ferramentas de livre acesso como ABRicate, entre outros",
-    "3": "Desenvolver banco de dados para Enteroccocus spp.",
+    "3": "Desenvolver banco de dados para Enteroccocus spp",
     "4": "Desenvolver banco de dados para Pseudomonas aeruginosa",
     "5": "Desenvolver banco de dados para Acinetobacter Baumannii",
     "6": "Desenvolver banco de dados para Mycobacterium tuberculosis",

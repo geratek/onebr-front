@@ -117,6 +117,10 @@ export default class MapEbursts extends Vue {
     display: none;
   }
 
+  &.efbr {
+    display: none;
+  }
+
   a {
     width: 100%;
     height: 100%;
