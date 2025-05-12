@@ -54,6 +54,7 @@ export default class Bacteria extends Vue {
       COVID: 'CV_19',
       SaBr: 'SA_BR',
       EfBr: 'EF_SPP_BR',
+      EccBr: 'ECC_BR',
     }
     const { name } = this.$route.params
     const bacteria = map[name]
