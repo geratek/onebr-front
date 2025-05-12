@@ -7,31 +7,15 @@
         </h2>
 
         <div class="glide-container">
-          <vue-glide
-            v-if="supportImages.length"
-            :options="options"
-          >
-            <vue-glide-slide
-              v-for="image in supportImages"
-              :key="image.id"
-            >
+          <div class="support-img" v-for="image in supportImages"
+            :key="image.id">
               <v-img
                 contain
                 max-height="100"
                 :alt="image.tooltip"
                 :src="image.src"
               />
-            </vue-glide-slide>
-
-            <template slot="control">
-              <button data-glide-dir="<">
-                <Icon name="chevron_left" />
-              </button>
-              <button data-glide-dir=">">
-                <Icon name="chevron_right" />
-              </button>
-            </template>
-          </vue-glide>
+          </div>
         </div>
       </v-col>
     </v-row>
@@ -85,6 +69,14 @@ export default class HomeSupport extends Vue {
 <style lang="scss" scoped>
 .glide-container {
   padding: 0 52px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.support-img {
+  margin: 0 30px 30px 30px;
 }
 
 .glide {
