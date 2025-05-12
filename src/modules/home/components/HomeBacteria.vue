@@ -1,7 +1,7 @@
 <template>
   <v-container class="home-bacteria">
     <v-row class="mb-10" justify="center">
-      <figure class="text-center pa-3"
+      <figure class="figure-bacteria text-center pa-3"
         v-for="bacterium in bacteria"
         :key="bacterium.name"
       >
@@ -87,5 +87,10 @@ export default class HomeBacteria extends Vue {
   @media #{map-get($display-breakpoints, 'lg-and-up')} {
     padding: 30px 0 0;
   }
+}
+
+.figure-bacteria  {
+  flex: 1 1 calc(20% - 4%);
+  margin: 0 2% 0 2%;
 }
 </style>
