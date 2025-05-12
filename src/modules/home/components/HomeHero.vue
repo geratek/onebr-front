@@ -3,7 +3,7 @@
     tile
     class="home-hero"
     color="#f5f5ff"
-    :height="$vuetify.breakpoint.smAndDown ? 'auto' : 570"
+    :height="$vuetify.breakpoint.smAndDown ? 'auto' : 480"
   >
     <div class="content">
       <h1 class="primary--text">
