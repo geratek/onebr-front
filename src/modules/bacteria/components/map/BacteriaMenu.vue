@@ -103,7 +103,7 @@ export default class BacteriaMenu extends Vue {
   @media #{map-get($display-breakpoints, 'md-and-up')} {
     left: 50px;
     right: auto;
-    width: 310px;
+    width: 350px;
 
     .v-input {
       box-shadow: none;
