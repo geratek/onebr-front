@@ -8,7 +8,8 @@ export const enum TeamMemberTitle {
   docStudent = 'DOC_STUDENT',
   mastering = 'MASTERING',
   scientificInitiation = 'SCIENTIFIC_INITIATION',
-  alumni = 'ALUMNI'
+  alumni = 'ALUMNI',
+  alumniIC = 'ALUMNI_IC'
 }
 
 class TeamMember {

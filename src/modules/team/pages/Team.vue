@@ -15,12 +15,14 @@
       />
 
       <v-row class="mb-10" justify="center">
-        <team-section :members="instructor" :showborder="true" :title="$t('team.instructor')">
+        <team-section :members="instructor" :title="$t('team.instructor')">
           <template v-slot="member">
             <team-member :member="member" />
           </template>
         </team-section>
+      </v-row>
 
+      <v-row class="mb-10" justify="center">
         <team-section :members="postDocStudents" :title="$t('team.post_doc_student')">
           <template v-slot="member">
             <team-member :member="member" />
@@ -54,6 +56,14 @@
 
       <v-row class="mb-10" justify="center">
         <team-section :members="alumni" :title="$t('team.alumni')">
+          <template v-slot="member">
+            <team-member :member="member" />
+          </template>
+        </team-section>
+      </v-row>
+
+      <v-row class="mb-10" justify="center">
+        <team-section :members="alumniIC" :title="$t('team.alumni_ic')">
           <template v-slot="member">
             <team-member :member="member" />
           </template>
@@ -106,6 +116,9 @@ export default class Team extends Mixins(ViewDataMixin) {
 
   @TeamModule.Getter
   private readonly alumni!: TeamMemberEntity[];
+
+  @TeamModule.Getter
+  private readonly alumniIC!: TeamMemberEntity[];
 
   viewDataScope = ViewDataScope.team
 

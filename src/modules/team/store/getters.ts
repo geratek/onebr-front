@@ -22,4 +22,7 @@ export default {
   alumni(state: TeamState): TeamMember[] {
     return filter(state.members, ['title', TeamMemberTitle.alumni])
   },
+  alumniIC(state: TeamState): TeamMember[] {
+    return filter(state.members, ['title', TeamMemberTitle.alumniIC])
+  },
 }
