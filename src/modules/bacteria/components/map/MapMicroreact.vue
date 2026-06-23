@@ -122,7 +122,7 @@ export default class Mapmicroreact extends Vue {
     display: none;
   }
 
-  &.eccbr {
+  &.ebbr {
     display: none;
   }
 
