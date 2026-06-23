@@ -121,7 +121,7 @@ export default class MapEbursts extends Vue {
     display: none;
   }
 
-  &.eccbr {
+  &.ebbr {
     display: none;
   }
 

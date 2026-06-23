@@ -52,10 +52,10 @@ const state: SharedState = {
       type: 'EF_SPP_BR',
     }),
     Bacteria.fromJson({
-      image: '/bacteria/eccbr.png',
-      name: 'EccBr',
+      image: '/bacteria/ebbr.png',
+      name: 'EbBr',
       origin: 'Brazilian Database',
-      scientificName: 'Enterobacter cloacae complex',
+      scientificName: 'Enterobacter spp',
       type: 'ECC_BR',
     }),
     Bacteria.fromJson({

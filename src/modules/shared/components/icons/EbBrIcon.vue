@@ -53,6 +53,6 @@
 
 <script>
 export default {
-  name: 'EccBrIcon',
+  name: 'EbBrIcon',
 }
 </script>
