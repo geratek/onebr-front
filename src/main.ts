@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueScrollactive from 'vue-scrollactive'
 import Toasted from 'vue-toasted'
-import VueAnalytics from 'vue-analytics'
 
 import App from './main/App.vue'
 import router from './main/router'
@@ -17,10 +16,6 @@ Vue.use(Toasted, {
   theme: 'outline',
   duration: 3000,
   position: 'bottom-right',
-})
-Vue.use(VueAnalytics, {
-  id: process.env.VUE_APP_ANALYTICS_ID,
-  router,
 })
 
 Vue.config.productionTip = false

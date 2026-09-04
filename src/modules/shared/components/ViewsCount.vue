@@ -6,7 +6,7 @@
       </v-btn>
 
       <span class="subtitle-2 text-no-wrap mr-2">
-        <span ref="views">{{ totalViews }}</span> {{ $t('shared.views') }}
+        <span ref="views">{{ totalViews.toLocaleString($i18n.locale) }}</span> {{ $t('shared.views') }}
       </span>
 
       <v-btn icon large @click="toggleExpand(false)">
