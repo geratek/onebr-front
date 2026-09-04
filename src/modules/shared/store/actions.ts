@@ -36,9 +36,13 @@ const actions: ActionTree<SharedState, unknown> = {
     }
   },
   async fetchTotalViews({ commit }, path = '/'): Promise<void> {
-    // const { data } = await AnalyticsService.totalViews(path)
-    // commit('setTotalViews', data.count)
-    commit('setTotalViews', 0)
+    try {
+      const { data } = await AnalyticsService.totalViews(path)
+      commit('setTotalViews', data.count)
+    } catch (err) {
+      console.error(err)
+      commit('setTotalViews', 0)
+    }
   },
 }
 
