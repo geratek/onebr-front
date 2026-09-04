@@ -232,8 +232,6 @@ export default class ExperimentTable extends Vue {
           setTimeout(() => { this.experimentDialog = false }, 1000)
         }, 750)
       }
-
-      this.$ga.page(`${this.$router.currentRoute.path}/view`)
     } catch (err) {
       console.error(err)
     }
