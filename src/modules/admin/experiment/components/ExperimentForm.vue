@@ -249,6 +249,10 @@
                       S
                     </v-btn>
 
+                    <v-btn text small value="I" :ripple="false">
+                      I
+                    </v-btn>
+
                     <v-btn text small value="R" :ripple="false">
                       R
                     </v-btn>
@@ -832,7 +836,7 @@ $color: rgba(0, 0, 0, 0.6);
     color: $color;
     display: inline-block;
     font-weight: bold;
-    width: 55px;
+    width: 42px;
   }
 
   .v-item-group {
@@ -840,8 +844,10 @@ $color: rgba(0, 0, 0, 0.6);
     border: 1px solid $color;
 
     .v-btn {
-      font-size: 16px;
+      font-size: 14px;
       margin: 0;
+      min-width: 26px !important;
+      padding: 0 6px !important;
       text-transform: uppercase;
 
       &:not(.v-item--active),
